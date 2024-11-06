@@ -70,19 +70,19 @@ def register(request):
     
     return render(request, 'register.html')
 
-# def loginpage(request):
+def loginpage(request):
    
-#     if request.method == 'POST':
-#         email = request.POST['email']
-#         password = request.POST['password']
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
 
-#         validate_user = authenticate(request, email=email, password=password)
-#         if validate_user is not None:
-#             login(request, validate_user)
-#             return redirect('index.html')
-#         # else:
-#         #     return redirect() 
-#     return render(request, 'login.html')
+        validate_user = authenticate(request, email=email, password=password)
+        if validate_user is not None:
+            login(request, validate_user)
+            return redirect('index.html')
+        # else:
+        #     return redirect() 
+    return render(request, 'login.html')
 
 
 def loginpage(request):
@@ -99,7 +99,7 @@ def loginpage(request):
                 validate_user = user
             else:
                 print("Password incorrect!")
-                validate_user = None
+                validate_user = User.objects.none() 
         except User.DoesNotExist:
             print("User not found!")
             validate_user = None
@@ -114,8 +114,14 @@ def loginpage(request):
             print("Login failed!")
     return render(request, 'login.html')
 
-def addUser(request):
-    return webbrowser.open('/admin/auth/user/')
+
+
+
+
+
+# def addUser(request):
+#     # return redirect('/admin/auth/user/')
+#     return webbrowser.open_new_tab('127.0.0.1:8000/admin/auth/user/')
     
 
 

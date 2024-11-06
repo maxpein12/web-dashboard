@@ -26,6 +26,6 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     # path('addUser/', views.addUser, name='addUser'),
 #     path('addUser/', include('web.urls')),
-    path('addUser/', views.addUser, name='addUser'),
+    # path('addUser/', views.addUser, name='addUser'),
 
 ]
