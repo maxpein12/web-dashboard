@@ -114,6 +114,10 @@ def loginpage(request):
             print("Login failed!")
     return render(request, 'login.html')
 
+def logoutpage(request):
+    logout(request)
+    return redirect('/dashboard/login')
+
 
 
 

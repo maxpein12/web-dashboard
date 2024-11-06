@@ -24,8 +24,6 @@ urlpatterns = [
     path('orders/', views.orders, name='orders'),
     path('login/', views.loginpage, name='login'),
     path('register/', views.register, name='register'),
-    # path('addUser/', views.addUser, name='addUser'),
-#     path('addUser/', include('web.urls')),
-    # path('addUser/', views.addUser, name='addUser'),
+    path('logout/', views.logoutpage, name='logout'),
 
 ]
