@@ -115,9 +115,12 @@
 
             <div class="contact-list-container">
                 <!-- Contact input form, initially hidden -->
+                 <form action="" method="post">
+                    {% csrf_token %}
                 <div id="contact-input-container" style="display:none;">
-                    <input type="text" id="new-contact-name" placeholder="Enter name">
-                    <input type="email" id="new-contact-email" placeholder="Enter email">
+                    <input type="text" id="new-contact-name" placeholder="Enter name" name = "name">
+                    <input type="email" id="new-contact-email" placeholder="Enter email" name = "email">
+                    <input type="gender" id="new-contact-gender" placeholder="Enter gender" name = "gender">
 
                     <!-- File input for uploading the profile picture -->
                     <input type="file" id="new-contact-picture" accept="image/*">
@@ -126,9 +129,10 @@
                     <img id="contact-picture-preview" src="#" alt="Profile Preview" style="display:none;">
 
                     <div>
-                        <button id="save-contact-btn">Save</button>
+                        <button id="save-contact-btn" type="submit" name="Register"> Save</button>
                         <button id="cancel-contact-btn">Cancel</button>
                     </div>
+                </form>
                 </div>
 
                 <!-- Profile picture wrapper for the new section -->
@@ -136,15 +140,15 @@
                     <h1 class="h1">Hover over and click the image to select.</h1>
                     <div class="pic-holder">
                         <!-- Image preview area -->
-                        <img id="profilePic" class="pic"
+                        <!-- <img id="profilePic" class="pic"
                              src="https://png.pngtree.com/thumb_back/fh260/background/20230612/pngtree-in-the-style-of-2d-game-art-image_2884743.jpg"
-                             alt="Profile Picture">
+                             alt="Profile Picture"> -->
                 
                         <!-- File input for new profile picture -->
                         <input class="uploadProfileInput" type="file" name="profile_pic" id="newProfilePhoto" accept="image/*" style="opacity: 0;" />
                         
                         <!-- Label for file input with camera icon -->
-                        <label for="newProfilePhoto" class="upload-file-block">
+                        <!-- <label for="newProfilePhoto" class="upload-file-block">
                             <div class="text-center">
                                 <div class="mb-2">
                                     <i class="fa fa-camera fa-2x"></i>
@@ -153,76 +157,25 @@
                                     Update <br /> Profile Photo
                                 </div>
                             </div>
-                        </label>
+                        </label> -->
                     </div>
                 </div>
 
                 <!-- The contact list that will be replaced by the input form -->
                 <ul id="contact-list" class="contact-grid">
-                    <li class="contact">
-                        <img src="https://via.placeholder.com/360x276" alt="Profile Picture" class="profile-picture">
-                        <div class="contact-info">
-                            <span class="contact-name">John Doe</span>
-                            <span class="contact-email">john.doe@example.com</span>
-                            <button class="message-btn">Message</button>
-                        </div>
-                    </li>
-                    <li class="contact">
-                        <img src="https://via.placeholder.com/360x276" alt="Profile Picture" class="profile-picture">
-                        <div class="contact-info">
-                            <span class="contact-name">Jane Smith</span>
-                            <span class="contact-email">jane.smith@example.com</span>
-                            <button class="message-btn">Message</button>
-                        </div>
-                    </li>
-                    <li class="contact">
-                        <img src="https://via.placeholder.com/360x276" alt="Profile Picture" class="profile-picture">
-                        <div class="contact-info">
-                            <span class="contact-name">Alice Johnson</span>
-                            <span class="contact-email">alice.johnson@example.com</span>
-                            <button class="message-btn">Message</button>
-                        </div>
-                    </li>
-                    <li class="contact">
-                        <img src="https://via.placeholder.com/360x276" alt="Profile Picture" class="profile-picture">
-                        <div class="contact-info">
-                            <span class="contact-name">Alice Johnson</span>
-                            <span class="contact-email">alice.johnson@example.com</span>
-                            <button class="message-btn">Message</button>
-                        </div>
-                    </li>
-                    <li class="contact">
-                        <img src="https://via.placeholder.com/360x276" alt="Profile Picture" class="profile-picture">
-                        <div class="contact-info">
-                            <span class="contact-name">Alice Johnson</span>
-                            <span class="contact-email">alice.johnson@example.com</span>
-                            <button class="message-btn">Message</button>
-                        </div>
-                    </li>
-                    <li class="contact">
-                        <img src="https://via.placeholder.com/360x276" alt="Profile Picture" class="profile-picture">
-                        <div class="contact-info">
-                            <span class="contact-name">Alice Johnson</span>
-                            <span class="contact-email">alice.johnson@example.com</span>
-                            <button class="message-btn">Message</button>
-                        </div>
-                    </li>
-                    <li class="contact">
-                        <img src="https://via.placeholder.com/360x276" alt="Profile Picture" class="profile-picture">
-                        <div class="contact-info">
-                            <span class="contact-name">Alice Johnson</span>
-                            <span class="contact-email">alice.johnson@example.com</span>
-                            <button class="message-btn">Message</button>
-                        </div>
-                    </li>
-                    <li class="contact">
-                        <img src="https://via.placeholder.com/360x276" alt="Profile Picture" class="profile-picture">
-                        <div class="contact-info">
-                            <span class="contact-name">Alice Johnson</span>
-                            <span class="contact-email">alice.johnson@example.com</span>
-                            <button class="message-btn">Message</button>
-                        </div>
-                    </li>
+                    {% for client in clients %}
+                        {% if client and client.name %}
+                            <li class="contact">
+                                <img src="https://via.placeholder.com/360x276" alt="Profile Picture" class="profile-picture">
+                                <div class="contact-info">
+                                    <span class="contact-name"> {{ client.name }} </span>
+                                    <span class="contact-email">{{ client.email }}</span>
+                                    <button class="message-btn">Message</button>
+                                </div>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    
                 </ul>
             </div>
         </div>

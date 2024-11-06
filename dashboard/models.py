@@ -12,3 +12,13 @@ class Team(models.Model):
     
 
 
+class Client(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    gender = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='images')
+
+    def __str__(self):
+        return f'{self.name} {self.email} {self.gender} {self.image}'
+    
+    

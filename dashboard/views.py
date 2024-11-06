@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, JsonResponse
-from .models import Team
+from .models import Client, Team
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -48,7 +48,8 @@ def todo(request):
 
 @login_required
 def contact(request):
-    return render(request, 'contact.html')
+    clients = Client.objects.all()
+    return render(request, 'contact.html', {'clients': clients})
 
 @login_required
 def invoice(request):
@@ -83,6 +84,19 @@ def register(request):
         return redirect('/dashboard/team')
     
     return render(request, 'register.html')
+
+def clientRegister(request):
+    name = email = gender = None
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        gender = request.POST['gender']
+
+        new_client = Client.objects.create_user(name, email, gender)
+        new_client.save()
+        return redirect('/dashboard/team')
+    
+    return render(request, 'contact.html')
 
 # def loginpage(request):
    
