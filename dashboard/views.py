@@ -14,47 +14,61 @@ def index(request):
     user_count = User.objects.count()
     return render(request, 'index.html', {'user_count': user_count})
 
+@login_required
 def products(request):
     return render(request, 'products.html')
 
+@login_required
 def favorites(request):
     return render(request, 'favorites.html')
 
+@login_required
 def inbox(request):
     return render(request, 'inbox.html')
 
+@login_required
 def orders(request):
     return render(request, 'orderlist.html')
 
+@login_required
 def stock(request): 
     return render(request, 'productstock.html')
 
+@login_required
 def pricing(request):
     return render(request, 'pricing.html')
 
+@login_required
 def calendar(request):
     return render(request, 'calendar.html')
 
+@login_required
 def todo(request):
     return render(request, 'to-do.html')
 
+@login_required
 def contact(request):
     return render(request, 'contact.html')
 
+@login_required
 def invoice(request):
     return render(request, 'invoice.html')
 
+@login_required
 def ui(request):
     return render(request, 'ui.html')
 
+@login_required
 def team(request):
     teams = Team.objects.all()
     users = User.objects.all()
     return render(request, 'team.html', {'users': users})
 
 
+@login_required
 def table(request):
     return render(request, 'table.html')
+
 
 
 def register(request):
@@ -70,19 +84,19 @@ def register(request):
     
     return render(request, 'register.html')
 
-def loginpage(request):
+# def loginpage(request):
    
-    if request.method == 'POST':
-        email = request.POST['email']
-        password = request.POST['password']
+#     if request.method == 'POST':
+#         email = request.POST['email']
+#         password = request.POST['password']
 
-        validate_user = authenticate(request, email=email, password=password)
-        if validate_user is not None:
-            login(request, validate_user)
-            return redirect('index.html')
-        # else:
-        #     return redirect() 
-    return render(request, 'login.html')
+#         validate_user = authenticate(request, email=email, password=password)
+#         if validate_user is not None:
+#             login(request, validate_user)
+#             return redirect('index.html')
+#         # else:
+#         #     return redirect() 
+#     return render(request, 'login.html')
 
 
 def loginpage(request):
@@ -99,7 +113,7 @@ def loginpage(request):
                 validate_user = user
             else:
                 print("Password incorrect!")
-                validate_user = User.objects.none() 
+                validate_user = None
         except User.DoesNotExist:
             print("User not found!")
             validate_user = None
@@ -112,6 +126,7 @@ def loginpage(request):
             return redirect('/dashboard')
         else:
             print("Login failed!")
+            return render(request, 'login.html')
     return render(request, 'login.html')
 
 def logoutpage(request):

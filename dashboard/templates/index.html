@@ -16,7 +16,7 @@
     <!-- Sidebar Navigation -->
     <aside class="sidebar">
         <div class="sidebar-header">
-            <h2>DashStack</h2>
+            <h2>Tomodachi</h2>
         </div>
         <ul class="sidebar-menu">
             <li><a href="{% url 'index' %}" class="menu-item active">
@@ -133,8 +133,8 @@
                     <img src="https://static.vecteezy.com/system/resources/thumbnails/019/900/322/small/happy-young-cute-illustration-face-profile-png.png" alt="User Avatar" class="user-avatar dropdown-toggle">
                     <span class="user-info dropdown-toggle">{{ user.username }}</span>
                     <div class="dropdown-menu">
-                        <a href="#">Manage Account</a>
-                        <a href="#">Change Password</a>
+                        <a href="/admin/auth/user/{{ user.id }}/change/" target="_blank" >Manage Account</a>
+                        <a href="/admin/auth/user/{{ user.id }}/password/" target="_blank">Change Password</a>
                         <a href="#">Activity Log</a>
                     </div>
                 </div>
@@ -275,3 +275,4 @@
 </body>
 
 </html>
+

@@ -45,7 +45,7 @@ document.querySelectorAll('.favorites').forEach(icon => {
         // Change icon based on favorited state
         const iconImage = this.querySelector('.favorites-icon');
         if (this.classList.contains('favorited')) {
-            iconImage.src = 'path/to/favorited-icon.svg'; // Update to a filled heart or similar
+            iconImage.src = 'https://www.svgrepo.com/show/422431/favorite-heart-interface.svg'; // Update to a filled heart or similar
         } else {
             iconImage.src = 'https://www.svgrepo.com/show/54280/favorite.svg'; // Original icon
         }

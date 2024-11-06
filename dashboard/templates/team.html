@@ -15,7 +15,7 @@
     <!-- Sidebar Navigation -->
     <aside class="sidebar">
         <div class="sidebar-header">
-            <h2>DashStack</h2>
+            <h2>Tomodachi</h2>
         </div>
         <ul class="sidebar-menu">
             <li><a href="{% url 'index' %}" class="menu-item">
@@ -108,13 +108,13 @@
         </header>
         <div class="main-body">
             <section class="deals-details">
-                <h2>Order Lists</h2>
+                <h2>Team Lists</h2>
                 
                
 
                 <div class="content">
                     <div class="header">
-                        <h3>Team</h3>
+                        <h3>Admins</h3>
                         <a href="/admin/auth/user/" target="_blank">
                         <button class="btn-add-member">Add New Member</button>
                     </a>
@@ -129,13 +129,13 @@
                         <div class="team-card">
                           
                             <!-- <img src="{{team.image.url}}" class="profile-pic" alt="User Image"> -->
-                            <img src="https://via.placeholder.com/100" class="profile-pic" alt="User Image">
-                            <h5 class="team-name">{% if user.is_staff %}{{user.username}}{% endif %}</h5>
-                            <p class="team-role">{% if user.is_staff %}Admin{% else %}Member{% endif %}<br><small>{%  if user.is_staff %}{{user.email}}{% endif %}</small></p>
+                            <img src="https://www.svgrepo.com/show/331253/user.svg" class="profile-pic" alt="User Image">
+                            <h5 class="team-name">{{user.username}}</h5>
+                            <p class="team-role">Admin<br><small>{{user.email}}</small></p>
                             
                             <!-- <h5 class="team-name">Jason Price</h5>
                             <p class="team-role">Admin<br><small>janick_parisian@yahoo.com</small></p> -->
-                            <button class="btn-edit"><span class="icon-edit">&#9998;</span> Edit</button>
+                            <a href="/admin/auth/user/{{user.id}}/change/" target="_blank"><button class="btn-edit"><span class="icon-edit">&#9998;</span> Edit</button></a>
                           
                         </div>
                         {% endif %}
@@ -145,15 +145,6 @@
                     </div>
                 </div>
  
-
-
-
-
-
-
-
-
-
             </section>
         </div>
     </main>
