@@ -1,13 +1,11 @@
 from django.shortcuts import redirect, render
-from django.http import HttpResponse, JsonResponse
+
 from .models import Client, Team, Product, Orders
-from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
-from django.urls import path, include
-from django.contrib import admin
-import webbrowser
+
+
 
 @login_required
 def index(request):
