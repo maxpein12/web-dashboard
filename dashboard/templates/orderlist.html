@@ -109,16 +109,13 @@
         <div class="main-body">
             <section class="deals-details">
                 <h2>Order Lists</h2>
-
-
-
                 <section class="order-lists">
                     <div class="filter-bar">
                         <button class="filter-button">
                             <img src="https://www.svgrepo.com/show/435321/filter.svg" alt="Filter Icon">
                             Filter By
                         </button>
-                    
+                        
                         <div class="filter-options">
                             <select class="filter-select" id="filter-date">
                                 <option value="" disabled selected>Date</option>
@@ -126,7 +123,7 @@
                                 <option value="this-week">This Week</option>
                                 <option value="this-month">This Month</option>
                             </select>
-                    
+                            
                             <select class="filter-select" id="filter-order-type">
                                 <option value="" disabled selected>Order Type</option>
                                 <option value="electric">Electric</option>
@@ -135,7 +132,7 @@
                                 <option value="mobile">Mobile</option>
                                 <option value="watch">Watch</option>
                             </select>
-                    
+                            
                             <select class="filter-select" id="filter-order-status">
                                 <option value="" disabled selected>Order Status</option>
                                 <option value="completed">Completed</option>
@@ -145,11 +142,10 @@
                                 <option value="in-transit">In Transit</option>
                             </select>
                         </div>
-                    
+                        
                         <button class="reset-filter-button">Reset Filter</button>
                     </div>
                     
-        
                     <table>
                         <thead>
                             <tr>
@@ -173,13 +169,12 @@
                                 {% else %} <td><span class="status processing">Processing</span></td>
                                 {% endif %}
                             </tr>
-                           {% endfor %}
+                            {% endfor %}
                             <!-- Add more rows as needed -->
                         </tbody>
                     </table>
                 </section>
             </section>
-
         </div>
     </main>
 
