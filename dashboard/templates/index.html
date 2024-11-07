@@ -186,7 +186,7 @@
                     <div class="metric-info">
                         <img src="https://static.thenounproject.com/png/2931158-200.png" alt="Orders Icon" class="metric-icon"> <!-- Order Icon -->
                         <h4>Total Pending</h4>
-                        <p> {{ order_pending }} </p>
+                        <p> {{ order_pending}} </p>
                     </div>
                     <div class="metric-change">⬆ 1.8% from yesterday</div>
                 </div>
@@ -216,53 +216,28 @@
                         <tr>
                             <th>Product Name</th>
                             <th>Location</th>
-                            <th>Date - Time</th>
+                            <th>Date</th>
                             <th>Piece</th>
                             <th>Amount</th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
+                        {% for order in orders %}
                         <tr>
-                            <td><img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MXM23ref_FV99_VW_34FR+watch-case-46-aluminum-jetblack-nc-s10_VW_34FR+watch-face-46-aluminum-jetblack-s10_VW_34FR?wid=5120&hei=3280&bgc=fafafa&trim=1&fmt=p-jpg&qlt=80&.v=TnVrdDZWRlZzTURKbHFqOGh0dGpVRW5TeWJ6QW43NUFnQ2V4cmRFc1VnYUdWejZ5THhpKzJwRmRDYlhxN2o5aXB2QjR6TEZ4ZThxM3VqYkZobmlXM3RGNnlaeXQ4NGFKQTAzc0NGeHR2aVk0VEhOZEFKYmY1ZHNpalQ3YVhOWk9WVlBjZVFuazArV21YaFcvTVJ5dzRuY0dmQWU1UUhxNENQZVRyQjk5ZnRCcVBpVENpMUluRnVNbld0T1NWSFh2cXlYK1hMV0U1ZW9xcCtlRHF3V3gyZThGL0dtL1JkeEJQSnRCMXJsZFBFY2doN2ZiODFwWklZeDgrZ0RtbVRXag" alt="Apple Watch" class="product-image"> Apple Watch</td>
-                            <td>6096 Marjolaine Landing</td>
-                            <td>12.09.2019 - 12:53 PM</td>
+                            {% if order.type == 'Apple Watch' %}<td><img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MXM23ref_FV99_VW_34FR+watch-case-46-aluminum-jetblack-nc-s10_VW_34FR+watch-face-46-aluminum-jetblack-s10_VW_34FR?wid=5120&hei=3280&bgc=fafafa&trim=1&fmt=p-jpg&qlt=80&.v=TnVrdDZWRlZzTURKbHFqOGh0dGpVRW5TeWJ6QW43NUFnQ2V4cmRFc1VnYUdWejZ5THhpKzJwRmRDYlhxN2o5aXB2QjR6TEZ4ZThxM3VqYkZobmlXM3RGNnlaeXQ4NGFKQTAzc0NGeHR2aVk0VEhOZEFKYmY1ZHNpalQ3YVhOWk9WVlBjZVFuazArV21YaFcvTVJ5dzRuY0dmQWU1UUhxNENQZVRyQjk5ZnRCcVBpVENpMUluRnVNbld0T1NWSFh2cXlYK1hMV0U1ZW9xcCtlRHF3V3gyZThGL0dtL1JkeEJQSnRCMXJsZFBFY2doN2ZiODFwWklZeDgrZ0RtbVRXag" alt="Apple Watch" class="product-image"> Apple Watch</td>
+                            {% elif order.type == 'Mac' %} <td><img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mba13-m2-digitalmat-gallery-1-202402?wid=728&hei=666&fmt=png-alpha&.v=1707263976493" alt="Macbook" class="product-image" >Macbook</td>
+                            {% elif order.type == 'iPhone' %}<td><img src="https://beyondthebox.ph/cdn/shop/products/IPHONE121_COLOR-PURPLE_CAPACITY-ALL_576x.png?v=1631584588" alt="iPhone" class="product-image" >iPhone</td>
+                            {% endif %}
+                            <td>{{ order.address }}</td>
+                            <td>{{ order.date }}</td>
                             <td>423</td>
                             <td>$34,295</td>
-                            <td><span class="badge bg-success">Delivered</span></td>
+                            {% if order.is_completed %}<td><span class="badge bg-success">Delivered</span></td>
+                            {% else %}<td><span class="badge bg-warning">Pending</span></td>
+                            {% endif %}
                         </tr>
-                        <tr>
-                            <td><img src="https://beyondthebox.ph/cdn/shop/products/IPHONE121_COLOR-PURPLE_CAPACITY-ALL_576x.png?v=1631584588" alt="iPhone" class="product-image"> iPhone 12</td>
-                            <td>8421 Hamilton Street</td>
-                            <td>14.10.2020 - 3:22 PM</td>
-                            <td>210</td>
-                            <td>$12,540</td>
-                            <td><span class="badge bg-warning">Pending</span></td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://beyondthebox.ph/cdn/shop/products/IPHONE121_COLOR-PURPLE_CAPACITY-ALL_576x.png?v=1631584588" alt="iPhone" class="product-image"> iPhone 12</td>
-                            <td>8421 Hamilton Street</td>
-                            <td>14.10.2020 - 3:22 PM</td>
-                            <td>210</td>
-                            <td>$12,540</td>
-                            <td><span class="badge bg-warning">Pending</span></td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://beyondthebox.ph/cdn/shop/products/IPHONE121_COLOR-PURPLE_CAPACITY-ALL_576x.png?v=1631584588" alt="iPhone" class="product-image"> iPhone 12</td>
-                            <td>8421 Hamilton Street</td>
-                            <td>14.10.2020 - 3:22 PM</td>
-                            <td>210</td>
-                            <td>$12,540</td>
-                            <td><span class="badge bg-warning">Pending</span></td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://beyondthebox.ph/cdn/shop/products/IPHONE121_COLOR-PURPLE_CAPACITY-ALL_576x.png?v=1631584588" alt="iPhone" class="product-image"> iPhone 12</td>
-                            <td>8421 Hamilton Street</td>
-                            <td>14.10.2020 - 3:22 PM</td>
-                            <td>210</td>
-                            <td>$12,540</td>
-                            <td><span class="badge bg-warning">Pending</span></td>
-                        </tr>
+                        {% endfor %}
                         
                     </tbody>
                 </table>
