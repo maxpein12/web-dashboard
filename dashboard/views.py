@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, JsonResponse
-from .models import Client, Team
+from .models import Client, Team, Product
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -32,7 +32,8 @@ def orders(request):
 
 @login_required
 def stock(request): 
-    return render(request, 'productstock.html')
+    products = Product.objects.all()
+    return render(request, 'productstock.html', {'products': products})
 
 @login_required
 def pricing(request):
@@ -85,32 +86,32 @@ def register(request):
     
     return render(request, 'register.html')
 
+# def clientRegister(request):
+    # name = email = gender = None
+    # try:
+    #     new_client = Client.objects.create(name=name, email=email, gender=gender)
+    #     new_client.save()
+    # except Exception as e:
+    #     print(f"Error creating client: {e}")
+    # if request.method == 'POST':
+    #     name = request.POST['name']
+    #     email = request.POST['email']
+    #     gender = request.POST['gender']
+
+    #     new_client = Client.objects.create(name, email, gender)
+    #     new_client.save()
+    #     return redirect('/dashboard/team')
+    
+    # return render(request, 'contact.html')
+
 def clientRegister(request):
-    name = email = gender = None
     if request.method == 'POST':
         name = request.POST['name']
         email = request.POST['email']
         gender = request.POST['gender']
-
-        new_client = Client.objects.create_user(name, email, gender)
-        new_client.save()
-        return redirect('/dashboard/team')
-    
+        Client.objects.create(name=name, email=email, gender=gender)
+        return render(request, 'contact.html')
     return render(request, 'contact.html')
-
-# def loginpage(request):
-   
-#     if request.method == 'POST':
-#         email = request.POST['email']
-#         password = request.POST['password']
-
-#         validate_user = authenticate(request, email=email, password=password)
-#         if validate_user is not None:
-#             login(request, validate_user)
-#             return redirect('index.html')
-#         # else:
-#         #     return redirect() 
-#     return render(request, 'login.html')
 
 
 def loginpage(request):

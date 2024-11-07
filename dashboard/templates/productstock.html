@@ -108,7 +108,7 @@
         </header>
         <div class="main-body">
             <section class="deals-details">
-                <h2>Order Lists</h2>
+                <h2>Stocks</h2>
                 
                 <table>
                     <thead>
@@ -123,12 +123,16 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for product in products %}
                         <tr>
-                            <td><img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MYG03ref_FV98_VW_34FR+watch-case-44-aluminum-midnight-nc-se_VW_34FR+watch-face-44-aluminum-midnight-se_VW_34FR?wid=752&hei=720&bgc=fafafa&trim=1&fmt=p-jpg&qlt=80&.v=OUh6OFdFVEJxVkF6SUo5TWxpTE50MG5TeWJ6QW43NUFnQ2V4cmRFc1VnWWxvMTNVeXVWaTk0Ui9PSEVKVVU0dzN2QVRTWW5kR2Jad3ptYU8zZ21EUWZmQXlUU2xCQ2pTN3lrcDE0UU1hK0ZpRFN2VTEyRk9ZNEFubk9kM01kUmIySDNGVkFuTWJDdzY3LzhwNXhBeGdqanlpa2c4cm9CV25oRTZ3N0FCaUk1SHU3NmZyQzBTVVZ5ZWlSanV5V2tOdkZ1emhkYWNycmJka1dOU01FKzNBdFRUV0g5d1FoYmhBY0FhQ1ZnNFdFRFI2SjAxL1NHYWFLQ2hLdGdQSUw4bw" alt="Apple Watch Series 4"></td>
-                            <td>Apple Watch Series 4</td>
-                            <td>Digital Product</td>
-                            <td>$690.00</td>
-                            <td>63</td>
+                            {% if product.name == 'Apple Watch' %}  <td><img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MYG03ref_FV98_VW_34FR+watch-case-44-aluminum-midnight-nc-se_VW_34FR+watch-face-44-aluminum-midnight-se_VW_34FR?wid=752&hei=720&bgc=fafafa&trim=1&fmt=p-jpg&qlt=80&.v=OUh6OFdFVEJxVkF6SUo5TWxpTE50MG5TeWJ6QW43NUFnQ2V4cmRFc1VnWWxvMTNVeXVWaTk0Ui9PSEVKVVU0dzN2QVRTWW5kR2Jad3ptYU8zZ21EUWZmQXlUU2xCQ2pTN3lrcDE0UU1hK0ZpRFN2VTEyRk9ZNEFubk9kM01kUmIySDNGVkFuTWJDdzY3LzhwNXhBeGdqanlpa2c4cm9CV25oRTZ3N0FCaUk1SHU3NmZyQzBTVVZ5ZWlSanV5V2tOdkZ1emhkYWNycmJka1dOU01FKzNBdFRUV0g5d1FoYmhBY0FhQ1ZnNFdFRFI2SjAxL1NHYWFLQ2hLdGdQSUw4bw" alt="Apple Watch Series 4">
+                            </td> {% elif product.name == 'Macbook' %} <td><img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mba13-m2-digitalmat-gallery-1-202402?wid=728&hei=666&fmt=png-alpha&.v=1707263976493" alt="Macbook">
+                            </td> {% elif product.name == 'iPhone' %} <td><img src="https://beyondthebox.ph/cdn/shop/products/IPHONE121_COLOR-PURPLE_CAPACITY-ALL_576x.png?v=1631584588" alt="iPhone">
+                            </td> {% else %} {% endif %}
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.category }}</td>
+                            <td>${{ product.price }}</td>
+                            <td>{{ product.piece }}</td>
                             <td>
                                 <span class="color black"></span>
                                 <span class="color pink"></span>
@@ -139,166 +143,9 @@
                                 <button class="delete-btn">🗑️</button>
                             </td>
                         </tr>
-                            <tr>
-                                <td><img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MYG03ref_FV98_VW_34FR+watch-case-44-aluminum-midnight-nc-se_VW_34FR+watch-face-44-aluminum-midnight-se_VW_34FR?wid=752&hei=720&bgc=fafafa&trim=1&fmt=p-jpg&qlt=80&.v=OUh6OFdFVEJxVkF6SUo5TWxpTE50MG5TeWJ6QW43NUFnQ2V4cmRFc1VnWWxvMTNVeXVWaTk0Ui9PSEVKVVU0dzN2QVRTWW5kR2Jad3ptYU8zZ21EUWZmQXlUU2xCQ2pTN3lrcDE0UU1hK0ZpRFN2VTEyRk9ZNEFubk9kM01kUmIySDNGVkFuTWJDdzY3LzhwNXhBeGdqanlpa2c4cm9CV25oRTZ3N0FCaUk1SHU3NmZyQzBTVVZ5ZWlSanV5V2tOdkZ1emhkYWNycmJka1dOU01FKzNBdFRUV0g5d1FoYmhBY0FhQ1ZnNFdFRFI2SjAxL1NHYWFLQ2hLdGdQSUw4bw" alt="Apple Watch Series 4"></td>
-                                <td>Apple Watch Series 4</td>
-                                <td>Digital Product</td>
-                                <td>$690.00</td>
-                                <td>63</td>
-                                <td>
-                                    <span class="color black"></span>
-                                    <span class="color pink"></span>
-                                    <span class="color gray"></span>
-                                </td>
-                                <td>
-                                    <button class="edit-btn">✏️</button>
-                                    <button class="delete-btn">🗑️</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MYG03ref_FV98_VW_34FR+watch-case-44-aluminum-midnight-nc-se_VW_34FR+watch-face-44-aluminum-midnight-se_VW_34FR?wid=752&hei=720&bgc=fafafa&trim=1&fmt=p-jpg&qlt=80&.v=OUh6OFdFVEJxVkF6SUo5TWxpTE50MG5TeWJ6QW43NUFnQ2V4cmRFc1VnWWxvMTNVeXVWaTk0Ui9PSEVKVVU0dzN2QVRTWW5kR2Jad3ptYU8zZ21EUWZmQXlUU2xCQ2pTN3lrcDE0UU1hK0ZpRFN2VTEyRk9ZNEFubk9kM01kUmIySDNGVkFuTWJDdzY3LzhwNXhBeGdqanlpa2c4cm9CV25oRTZ3N0FCaUk1SHU3NmZyQzBTVVZ5ZWlSanV5V2tOdkZ1emhkYWNycmJka1dOU01FKzNBdFRUV0g5d1FoYmhBY0FhQ1ZnNFdFRFI2SjAxL1NHYWFLQ2hLdGdQSUw4bw" alt="Apple Watch Series 4"></td>
-                                <td>Apple Watch Series 4</td>
-                                <td>Digital Product</td>
-                                <td>$690.00</td>
-                                <td>63</td>
-                                <td>
-                                    <span class="color black"></span>
-                                    <span class="color pink"></span>
-                                    <span class="color gray"></span>
-                                </td>
-                                <td>
-                                    <button class="edit-btn">✏️</button>
-                                    <button class="delete-btn">🗑️</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MYG03ref_FV98_VW_34FR+watch-case-44-aluminum-midnight-nc-se_VW_34FR+watch-face-44-aluminum-midnight-se_VW_34FR?wid=752&hei=720&bgc=fafafa&trim=1&fmt=p-jpg&qlt=80&.v=OUh6OFdFVEJxVkF6SUo5TWxpTE50MG5TeWJ6QW43NUFnQ2V4cmRFc1VnWWxvMTNVeXVWaTk0Ui9PSEVKVVU0dzN2QVRTWW5kR2Jad3ptYU8zZ21EUWZmQXlUU2xCQ2pTN3lrcDE0UU1hK0ZpRFN2VTEyRk9ZNEFubk9kM01kUmIySDNGVkFuTWJDdzY3LzhwNXhBeGdqanlpa2c4cm9CV25oRTZ3N0FCaUk1SHU3NmZyQzBTVVZ5ZWlSanV5V2tOdkZ1emhkYWNycmJka1dOU01FKzNBdFRUV0g5d1FoYmhBY0FhQ1ZnNFdFRFI2SjAxL1NHYWFLQ2hLdGdQSUw4bw" alt="Apple Watch Series 4"></td>
-                                <td>Apple Watch Series 4</td>
-                                <td>Digital Product</td>
-                                <td>$690.00</td>
-                                <td>63</td>
-                                <td>
-                                    <span class="color black"></span>
-                                    <span class="color pink"></span>
-                                    <span class="color gray"></span>
-                                </td>
-                                <td>
-                                    <button class="edit-btn">✏️</button>
-                                    <button class="delete-btn">🗑️</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MYG03ref_FV98_VW_34FR+watch-case-44-aluminum-midnight-nc-se_VW_34FR+watch-face-44-aluminum-midnight-se_VW_34FR?wid=752&hei=720&bgc=fafafa&trim=1&fmt=p-jpg&qlt=80&.v=OUh6OFdFVEJxVkF6SUo5TWxpTE50MG5TeWJ6QW43NUFnQ2V4cmRFc1VnWWxvMTNVeXVWaTk0Ui9PSEVKVVU0dzN2QVRTWW5kR2Jad3ptYU8zZ21EUWZmQXlUU2xCQ2pTN3lrcDE0UU1hK0ZpRFN2VTEyRk9ZNEFubk9kM01kUmIySDNGVkFuTWJDdzY3LzhwNXhBeGdqanlpa2c4cm9CV25oRTZ3N0FCaUk1SHU3NmZyQzBTVVZ5ZWlSanV5V2tOdkZ1emhkYWNycmJka1dOU01FKzNBdFRUV0g5d1FoYmhBY0FhQ1ZnNFdFRFI2SjAxL1NHYWFLQ2hLdGdQSUw4bw" alt="Apple Watch Series 4"></td>
-                                <td>Apple Watch Series 4</td>
-                                <td>Digital Product</td>
-                                <td>$690.00</td>
-                                <td>63</td>
-                                <td>
-                                    <span class="color black"></span>
-                                    <span class="color pink"></span>
-                                    <span class="color gray"></span>
-                                </td>
-                                <td>
-                                    <button class="edit-btn">✏️</button>
-                                    <button class="delete-btn">🗑️</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MYG03ref_FV98_VW_34FR+watch-case-44-aluminum-midnight-nc-se_VW_34FR+watch-face-44-aluminum-midnight-se_VW_34FR?wid=752&hei=720&bgc=fafafa&trim=1&fmt=p-jpg&qlt=80&.v=OUh6OFdFVEJxVkF6SUo5TWxpTE50MG5TeWJ6QW43NUFnQ2V4cmRFc1VnWWxvMTNVeXVWaTk0Ui9PSEVKVVU0dzN2QVRTWW5kR2Jad3ptYU8zZ21EUWZmQXlUU2xCQ2pTN3lrcDE0UU1hK0ZpRFN2VTEyRk9ZNEFubk9kM01kUmIySDNGVkFuTWJDdzY3LzhwNXhBeGdqanlpa2c4cm9CV25oRTZ3N0FCaUk1SHU3NmZyQzBTVVZ5ZWlSanV5V2tOdkZ1emhkYWNycmJka1dOU01FKzNBdFRUV0g5d1FoYmhBY0FhQ1ZnNFdFRFI2SjAxL1NHYWFLQ2hLdGdQSUw4bw" alt="Apple Watch Series 4"></td>
-                                <td>Apple Watch Series 4</td>
-                                <td>Digital Product</td>
-                                <td>$690.00</td>
-                                <td>63</td>
-                                <td>
-                                    <span class="color black"></span>
-                                    <span class="color pink"></span>
-                                    <span class="color gray"></span>
-                                </td>
-                                <td>
-                                    <button class="edit-btn">✏️</button>
-                                    <button class="delete-btn">🗑️</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MYG03ref_FV98_VW_34FR+watch-case-44-aluminum-midnight-nc-se_VW_34FR+watch-face-44-aluminum-midnight-se_VW_34FR?wid=752&hei=720&bgc=fafafa&trim=1&fmt=p-jpg&qlt=80&.v=OUh6OFdFVEJxVkF6SUo5TWxpTE50MG5TeWJ6QW43NUFnQ2V4cmRFc1VnWWxvMTNVeXVWaTk0Ui9PSEVKVVU0dzN2QVRTWW5kR2Jad3ptYU8zZ21EUWZmQXlUU2xCQ2pTN3lrcDE0UU1hK0ZpRFN2VTEyRk9ZNEFubk9kM01kUmIySDNGVkFuTWJDdzY3LzhwNXhBeGdqanlpa2c4cm9CV25oRTZ3N0FCaUk1SHU3NmZyQzBTVVZ5ZWlSanV5V2tOdkZ1emhkYWNycmJka1dOU01FKzNBdFRUV0g5d1FoYmhBY0FhQ1ZnNFdFRFI2SjAxL1NHYWFLQ2hLdGdQSUw4bw" alt="Apple Watch Series 4"></td>
-                                <td>Apple Watch Series 4</td>
-                                <td>Digital Product</td>
-                                <td>$690.00</td>
-                                <td>63</td>
-                                <td>
-                                    <span class="color black"></span>
-                                    <span class="color pink"></span>
-                                    <span class="color gray"></span>
-                                </td>
-                                <td>
-                                    <button class="edit-btn">✏️</button>
-                                    <button class="delete-btn">🗑️</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MYG03ref_FV98_VW_34FR+watch-case-44-aluminum-midnight-nc-se_VW_34FR+watch-face-44-aluminum-midnight-se_VW_34FR?wid=752&hei=720&bgc=fafafa&trim=1&fmt=p-jpg&qlt=80&.v=OUh6OFdFVEJxVkF6SUo5TWxpTE50MG5TeWJ6QW43NUFnQ2V4cmRFc1VnWWxvMTNVeXVWaTk0Ui9PSEVKVVU0dzN2QVRTWW5kR2Jad3ptYU8zZ21EUWZmQXlUU2xCQ2pTN3lrcDE0UU1hK0ZpRFN2VTEyRk9ZNEFubk9kM01kUmIySDNGVkFuTWJDdzY3LzhwNXhBeGdqanlpa2c4cm9CV25oRTZ3N0FCaUk1SHU3NmZyQzBTVVZ5ZWlSanV5V2tOdkZ1emhkYWNycmJka1dOU01FKzNBdFRUV0g5d1FoYmhBY0FhQ1ZnNFdFRFI2SjAxL1NHYWFLQ2hLdGdQSUw4bw" alt="Apple Watch Series 4"></td>
-                                <td>Apple Watch Series 4</td>
-                                <td>Digital Product</td>
-                                <td>$690.00</td>
-                                <td>63</td>
-                                <td>
-                                    <span class="color black"></span>
-                                    <span class="color pink"></span>
-                                    <span class="color gray"></span>
-                                </td>
-                                <td>
-                                    <button class="edit-btn">✏️</button>
-                                    <button class="delete-btn">🗑️</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MYG03ref_FV98_VW_34FR+watch-case-44-aluminum-midnight-nc-se_VW_34FR+watch-face-44-aluminum-midnight-se_VW_34FR?wid=752&hei=720&bgc=fafafa&trim=1&fmt=p-jpg&qlt=80&.v=OUh6OFdFVEJxVkF6SUo5TWxpTE50MG5TeWJ6QW43NUFnQ2V4cmRFc1VnWWxvMTNVeXVWaTk0Ui9PSEVKVVU0dzN2QVRTWW5kR2Jad3ptYU8zZ21EUWZmQXlUU2xCQ2pTN3lrcDE0UU1hK0ZpRFN2VTEyRk9ZNEFubk9kM01kUmIySDNGVkFuTWJDdzY3LzhwNXhBeGdqanlpa2c4cm9CV25oRTZ3N0FCaUk1SHU3NmZyQzBTVVZ5ZWlSanV5V2tOdkZ1emhkYWNycmJka1dOU01FKzNBdFRUV0g5d1FoYmhBY0FhQ1ZnNFdFRFI2SjAxL1NHYWFLQ2hLdGdQSUw4bw" alt="Apple Watch Series 4"></td>
-                                <td>Apple Watch Series 4</td>
-                                <td>Digital Product</td>
-                                <td>$690.00</td>
-                                <td>63</td>
-                                <td>
-                                    <span class="color black"></span>
-                                    <span class="color pink"></span>
-                                    <span class="color gray"></span>
-                                </td>
-                                <td>
-                                    <button class="edit-btn">✏️</button>
-                                    <button class="delete-btn">🗑️</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MYG03ref_FV98_VW_34FR+watch-case-44-aluminum-midnight-nc-se_VW_34FR+watch-face-44-aluminum-midnight-se_VW_34FR?wid=752&hei=720&bgc=fafafa&trim=1&fmt=p-jpg&qlt=80&.v=OUh6OFdFVEJxVkF6SUo5TWxpTE50MG5TeWJ6QW43NUFnQ2V4cmRFc1VnWWxvMTNVeXVWaTk0Ui9PSEVKVVU0dzN2QVRTWW5kR2Jad3ptYU8zZ21EUWZmQXlUU2xCQ2pTN3lrcDE0UU1hK0ZpRFN2VTEyRk9ZNEFubk9kM01kUmIySDNGVkFuTWJDdzY3LzhwNXhBeGdqanlpa2c4cm9CV25oRTZ3N0FCaUk1SHU3NmZyQzBTVVZ5ZWlSanV5V2tOdkZ1emhkYWNycmJka1dOU01FKzNBdFRUV0g5d1FoYmhBY0FhQ1ZnNFdFRFI2SjAxL1NHYWFLQ2hLdGdQSUw4bw" alt="Apple Watch Series 4"></td>
-                                <td>Apple Watch Series 4</td>
-                                <td>Digital Product</td>
-                                <td>$690.00</td>
-                                <td>63</td>
-                                <td>
-                                    <span class="color black"></span>
-                                    <span class="color pink"></span>
-                                    <span class="color gray"></span>
-                                </td>
-                                <td>
-                                    <button class="edit-btn">✏️</button>
-                                    <button class="delete-btn">🗑️</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MYG03ref_FV98_VW_34FR+watch-case-44-aluminum-midnight-nc-se_VW_34FR+watch-face-44-aluminum-midnight-se_VW_34FR?wid=752&hei=720&bgc=fafafa&trim=1&fmt=p-jpg&qlt=80&.v=OUh6OFdFVEJxVkF6SUo5TWxpTE50MG5TeWJ6QW43NUFnQ2V4cmRFc1VnWWxvMTNVeXVWaTk0Ui9PSEVKVVU0dzN2QVRTWW5kR2Jad3ptYU8zZ21EUWZmQXlUU2xCQ2pTN3lrcDE0UU1hK0ZpRFN2VTEyRk9ZNEFubk9kM01kUmIySDNGVkFuTWJDdzY3LzhwNXhBeGdqanlpa2c4cm9CV25oRTZ3N0FCaUk1SHU3NmZyQzBTVVZ5ZWlSanV5V2tOdkZ1emhkYWNycmJka1dOU01FKzNBdFRUV0g5d1FoYmhBY0FhQ1ZnNFdFRFI2SjAxL1NHYWFLQ2hLdGdQSUw4bw" alt="Apple Watch Series 4"></td>
-                                <td>Apple Watch Series 4</td>
-                                <td>Digital Product</td>
-                                <td>$690.00</td>
-                                <td>63</td>
-                                <td>
-                                    <span class="color black"></span>
-                                    <span class="color pink"></span>
-                                    <span class="color gray"></span>
-                                </td>
-                                <td>
-                                    <button class="edit-btn">✏️</button>
-                                    <button class="delete-btn">🗑️</button>
-                                </td>
-                            </tr>
+                        {% endfor %}
+
+                    </tbody>
                             
                         <!-- Repeat this for other products -->
                 </table>
