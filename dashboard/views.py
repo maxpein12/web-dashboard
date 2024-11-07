@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, JsonResponse
-from .models import Client, Team, Product
+from .models import Client, Team, Product, Orders
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -11,7 +11,7 @@ import webbrowser
 
 @login_required
 def index(request):
-    user_count = User.objects.count()
+    user_count = Client.objects.count()
     return render(request, 'index.html', {'user_count': user_count})
 
 @login_required
@@ -28,7 +28,8 @@ def inbox(request):
 
 @login_required
 def orders(request):
-    return render(request, 'orderlist.html')
+    orders = Orders.objects.all()
+    return render(request, 'orderlist.html', {'orders': orders})
 
 @login_required
 def stock(request): 

@@ -162,22 +162,18 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {% for order in orders %}
                             <tr>
-                                <td>00001</td>
-                                <td>Christine Brooks</td>
-                                <td>089 Kutch Green Apt. 448</td>
-                                <td>04 Sep 2019</td>
-                                <td>Electric</td>
-                                <td><span class="status completed">Completed</span></td>
+                                <td>{{ order.id }}</td>
+                                <td>{{order.name}}</td>
+                                <td>{{order.address}}</td>
+                                <td>{{order.date}}</td>
+                                <td>{{order.type}}</td>
+                                {% if order.is_completed %} <td><span class="status completed">Completed</span></td>
+                                {% else %} <td><span class="status processing">Processing</span></td>
+                                {% endif %}
                             </tr>
-                            <tr>
-                                <td>00002</td>
-                                <td>Rosie Pearson</td>
-                                <td>979 Immanuel Ferry Suite 526</td>
-                                <td>28 May 2019</td>
-                                <td>Book</td>
-                                <td><span class="status processing">Processing</span></td>
-                            </tr>
+                           {% endfor %}
                             <!-- Add more rows as needed -->
                         </tbody>
                     </table>

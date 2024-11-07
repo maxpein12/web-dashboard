@@ -31,3 +31,14 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+class Orders(models.Model):
+    name = models.CharField(max_length=100)
+    address = models.CharField(max_length=100)
+    date = models.DateField()
+    type = models.CharField(max_length=100)
+    is_completed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
