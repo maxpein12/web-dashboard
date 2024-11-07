@@ -11,10 +11,11 @@ import webbrowser
 
 @login_required
 def index(request):
+    orders = Orders.objects.all()
     order_count = Orders.objects.count()
     order_pending = Orders.objects.filter(is_completed='0').count()
     user_count = Client.objects.count()
-    return render(request, 'index.html', {'user_count': user_count, 'order_count': order_count, 'order_pending': order_pending})  
+    return render(request, 'index.html', {'user_count': user_count, 'order_count': order_count, 'order_pending': order_pending, 'orders': orders})  
 
 @login_required
 def products(request):
