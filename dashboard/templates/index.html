@@ -197,6 +197,7 @@
                         <p>5.6%</p>
                     </div>
                     <div class="metric-change">⬆ 0.5% from last month</div>
+                    
                 </div>
             </section>
 
@@ -206,8 +207,28 @@
                     <h2>Sales details</h2>
                 </div>
                 <canvas id="salesChart"></canvas>
+                {% for order in orders %}
+                <script>
+                    
+                    var jan = "{{ orders_january }}";
+                    var feb = "{{ orders_february }}";
+                    var mar = "{{ orders_march }}";
+                    var apr ="{{ orders_april }}";
+                    var may = "{{ orders_may }}";
+                    var jun = "{{ orders_june }}";
+                    var jul = "{{ orders_july }}";
+                    var aug = "{{ orders_august }}";
+                    var sep = "{{ orders_september }}";
+                    var oct = "{{ orders_october }}";
+                    var nov = "{{ orders_november }}";
+                    var dec = "{{ orders_december }}";
+                    
+                
+                </script>
+                {% endfor %}
             </section>
 
+            
             <!-- Deals Details Table -->
             <section class="deals-details">
                     <h2>Deals details</h2>

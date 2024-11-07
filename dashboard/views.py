@@ -13,9 +13,22 @@ import webbrowser
 def index(request):
     orders = Orders.objects.all()
     order_count = Orders.objects.count()
+    orders_january = Orders.objects.filter(date__month='1').count()
+    orders_february = Orders.objects.filter(date__month='2').count()
+    orders_march = Orders.objects.filter(date__month='3').count()
+    orders_april = Orders.objects.filter(date__month='4').count()
+    orders_may = Orders.objects.filter(date__month='5').count()
+    orders_june = Orders.objects.filter(date__month='6').count()
+    orders_july = Orders.objects.filter(date__month='7').count()
+    orders_august = Orders.objects.filter(date__month='8').count()
+    orders_september = Orders.objects.filter(date__month='9').count()
+    orders_october = Orders.objects.filter(date__month='10').count()
+    orders_november = Orders.objects.filter(date__month='11').count()
+    orders_december = Orders.objects.filter(date__month='12').count()
     order_pending = Orders.objects.filter(is_completed='0').count()
+    print(orders_november)
     user_count = Client.objects.count()
-    return render(request, 'index.html', {'user_count': user_count, 'order_count': order_count, 'order_pending': order_pending, 'orders': orders})  
+    return render(request, 'index.html', {'user_count': user_count, 'order_count': order_count, 'order_pending': order_pending, 'orders': orders, 'orders_november': orders_november, 'orders_january': orders_january, 'orders_february': orders_february, 'orders_march': orders_march, 'orders_april': orders_april, 'orders_may': orders_may, 'orders_june': orders_june, 'orders_july': orders_july, 'orders_august': orders_august, 'orders_september': orders_september, 'orders_october': orders_october, 'orders_december': orders_december})  
 
 @login_required
 def products(request):
