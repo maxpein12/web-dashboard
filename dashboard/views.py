@@ -19,11 +19,13 @@ def index(request):
 
 @login_required
 def products(request):
-    return render(request, 'products.html')
+    products = Product.objects.all()
+    return render(request, 'products.html', {'products': products})
 
 @login_required
 def favorites(request):
-    return render(request, 'favorites.html')
+    products = Product.objects.all()
+    return render(request, 'favorites.html', {'products': products})
 
 @login_required
 def inbox(request):
