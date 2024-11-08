@@ -38,6 +38,7 @@ class Orders(models.Model):
     address = models.CharField(max_length=100)
     date = models.DateField()
     type = models.CharField(max_length=100)
+    quantity = models.IntegerField(8)
     is_completed = models.BooleanField(default=False)
 
     def __str__(self):

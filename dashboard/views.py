@@ -5,28 +5,33 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 
+import datetime
 
 
+now = datetime.datetime.now()
 @login_required
 def index(request):
     orders = Orders.objects.all()
+    products = Product.objects.all()
     order_count = Orders.objects.count()
-    orders_january = Orders.objects.filter(date__month='1').count()
-    orders_february = Orders.objects.filter(date__month='2').count()
-    orders_march = Orders.objects.filter(date__month='3').count()
-    orders_april = Orders.objects.filter(date__month='4').count()
-    orders_may = Orders.objects.filter(date__month='5').count()
-    orders_june = Orders.objects.filter(date__month='6').count()
-    orders_july = Orders.objects.filter(date__month='7').count()
-    orders_august = Orders.objects.filter(date__month='8').count()
-    orders_september = Orders.objects.filter(date__month='9').count()
-    orders_october = Orders.objects.filter(date__month='10').count()
-    orders_november = Orders.objects.filter(date__month='11').count()
-    orders_december = Orders.objects.filter(date__month='12').count()
-    order_pending = Orders.objects.filter(is_completed='0').count()
-    print(orders_november)
+
+    orders_january = Orders.objects.filter(date__month='1', date__year = now.year).count()
+    orders_february = Orders.objects.filter(date__month='2', date__year=now.year).count()
+    orders_march = Orders.objects.filter(date__month='3', date__year=now.year).count()
+    orders_april = Orders.objects.filter(date__month='4', date__year=now.year).count()
+    orders_may = Orders.objects.filter(date__month='5', date__year=now.year).count()
+    orders_june = Orders.objects.filter(date__month='6', date__year=now.year).count()
+    orders_july = Orders.objects.filter(date__month='7', date__year=now.year).count()
+    orders_august = Orders.objects.filter(date__month='8', date__year=now.year).count()
+    orders_september = Orders.objects.filter(date__month='9', date__year=now.year).count()
+    orders_october = Orders.objects.filter(date__month='10', date__year=now.year).count()
+    orders_november = Orders.objects.filter(date__month='11', date__year=now.year).count()
+    orders_december = Orders.objects.filter(date__month='12', date__year=now.year).count()
+
+    order_pending = Orders.objects.filter(is_completed='0', date__year=now.year).count()
+
     user_count = Client.objects.count()
-    return render(request, 'index.html', {'user_count': user_count, 'order_count': order_count, 'order_pending': order_pending, 'orders': orders, 'orders_november': orders_november, 'orders_january': orders_january, 'orders_february': orders_february, 'orders_march': orders_march, 'orders_april': orders_april, 'orders_may': orders_may, 'orders_june': orders_june, 'orders_july': orders_july, 'orders_august': orders_august, 'orders_september': orders_september, 'orders_october': orders_october, 'orders_december': orders_december})  
+    return render(request, 'index.html', {'user_count': user_count, 'order_count': order_count, 'order_pending': order_pending, 'orders': orders, 'orders_november': orders_november, 'orders_january': orders_january, 'orders_february': orders_february, 'orders_march': orders_march, 'orders_april': orders_april, 'orders_may': orders_may, 'orders_june': orders_june, 'orders_july': orders_july, 'orders_august': orders_august, 'orders_september': orders_september, 'orders_october': orders_october, 'orders_december': orders_december, 'products': products})  
 
 @login_required
 def products(request):
@@ -167,12 +172,5 @@ def logoutpage(request):
 
 
 
-
-
-
-# def addUser(request):
-#     # return redirect('/admin/auth/user/')
-#     return webbrowser.open_new_tab('127.0.0.1:8000/admin/auth/user/')
-    
 
 
