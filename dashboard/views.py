@@ -4,6 +4,7 @@ from .models import Client, Team, Product, Orders
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
+from django.db.models import Sum
 
 import datetime
 
@@ -29,9 +30,11 @@ def index(request):
     orders_december = Orders.objects.filter(date__month='12', date__year=now.year).count()
 
     order_pending = Orders.objects.filter(is_completed='0', date__year=now.year).count()
+    order_delivered = Orders.objects.filter(is_completed='1', date__year=now.year).count()
+    total_sales = Orders.objects.filter(is_completed='1', date__year=now.year).aggregate(total=Sum('price'))
 
     user_count = Client.objects.count()
-    return render(request, 'index.html', {'user_count': user_count, 'order_count': order_count, 'order_pending': order_pending, 'orders': orders, 'orders_november': orders_november, 'orders_january': orders_january, 'orders_february': orders_february, 'orders_march': orders_march, 'orders_april': orders_april, 'orders_may': orders_may, 'orders_june': orders_june, 'orders_july': orders_july, 'orders_august': orders_august, 'orders_september': orders_september, 'orders_october': orders_october, 'orders_december': orders_december, 'products': products})  
+    return render(request, 'index.html', {'user_count': user_count, 'order_count': order_count, 'order_pending': order_pending, 'orders': orders, 'orders_november': orders_november, 'orders_january': orders_january, 'orders_february': orders_february, 'orders_march': orders_march, 'orders_april': orders_april, 'orders_may': orders_may, 'orders_june': orders_june, 'orders_july': orders_july, 'orders_august': orders_august, 'orders_september': orders_september, 'orders_october': orders_october, 'orders_december': orders_december, 'products': products, 'total_sales': total_sales, 'order_delivered': order_delivered})  
 
 @login_required
 def products(request):
@@ -108,23 +111,7 @@ def register(request):
     
     return render(request, 'register.html')
 
-# def clientRegister(request):
-    # name = email = gender = None
-    # try:
-    #     new_client = Client.objects.create(name=name, email=email, gender=gender)
-    #     new_client.save()
-    # except Exception as e:
-    #     print(f"Error creating client: {e}")
-    # if request.method == 'POST':
-    #     name = request.POST['name']
-    #     email = request.POST['email']
-    #     gender = request.POST['gender']
 
-    #     new_client = Client.objects.create(name, email, gender)
-    #     new_client.save()
-    #     return redirect('/dashboard/team')
-    
-    # return render(request, 'contact.html')
 
 def clientRegister(request):
     if request.method == 'POST':

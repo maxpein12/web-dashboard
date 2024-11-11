@@ -153,7 +153,7 @@
                             {{ user_count }}
                         </p>
                     </div>
-                    <div class="metric-change">⬆ 8.5% from yesterday</div>
+                    <!-- <div class="metric-change">⬆ 8.5% from yesterday</div> -->
                 </div>
                 <div class="metric-card">
                     <div class="metric-info">
@@ -161,15 +161,15 @@
                         <h4>Total Orders</h4>
                         <p>{{ order_count }}</p>
                     </div>
-                    <div class="metric-change">⬆ 1.3% from last week</div>
+                    <!-- <div class="metric-change">⬆ 1.3% from last week</div> -->
                 </div>
                 <div class="metric-card">
                     <div class="metric-info">
                         <img src="https://icons.veryicon.com/png/o/business/p2p/total-sales-volume.png" alt="Orders Icon" class="metric-icon"> <!-- Order Icon -->
                         <h4>Total Sales</h4>
-                        <p>$89,000</p>
+                        <p>${{ total_sales.total }}</p>
                     </div>
-                    <div class="metric-change">⬇ 4.3% from yesterday</div>
+                    <!-- <div class="metric-change">⬇ 4.3% from yesterday</div> -->
                 </div>
                 <div class="metric-card">
                     <div class="metric-info">
@@ -177,15 +177,16 @@
                         <h4>Total Pending</h4>
                         <p> {{ order_pending}} </p>
                     </div>
-                    <div class="metric-change">⬆ 1.8% from yesterday</div>
+                    <!-- <div class="metric-change">⬆ 1.8% from yesterday</div> -->
                 </div>
                 <!-- Add New Metrics -->
                 <div class="metric-card">
+                    <img src="https://www.svgrepo.com/show/10155/delivered-box-verification-symbol.svg" class="metric-icon" alt="">
                     <div class="metric-info">
-                        <h4>Conversion Rate</h4>
-                        <p>5.6%</p>
+                        <h4>Total Delivered</h4>
+                        <p>{{ order_delivered }}</p>
                     </div>
-                    <div class="metric-change">⬆ 0.5% from last month</div>
+                    <!-- <div class="metric-change">⬆ 0.5% from last month</div> -->
                     
                 </div>
             </section>
@@ -210,7 +211,22 @@
                     var oct = "{{ orders_october }}";
                     var nov = "{{ orders_november }}";
                     var dec = "{{ orders_december }}";
+                    var iPhone = "{{ iPhone_price }}";
+                    var Mac = "{{ Mac_price }}";
+                    var AppleWatch = "{{ AppleWatch_price }}";
+                    var quantity = getElementById("quantity");
+                    var product = getElementById("product");
                     
+                    if (product == 'iPhone') {
+                        price = quantity * iPhone;
+                        getElementById("price").value = price;
+                    } else if (product == 'Mac') {
+                        price = quantity * Mac;
+                        getElementById("price").value = price;
+                    } else if (product == 'Apple Watch') {
+                        price = quantity * AppleWatch;
+                        getElementById("price").value = price;
+                    }
                 
                 </script>
              
@@ -219,6 +235,8 @@
             
             <!-- Deals Details Table -->
             <section class="deals-details">
+
+                
                     <h2>Deals details</h2>
                 <table class="table table-striped">
                     <thead>
@@ -241,7 +259,7 @@
                             <td>{{ order.address }}</td>
                             <td>{{ order.date }}</td>
                             <td id="quantity">{{ order.quantity }}</td>
-                            <td id="price"></td>
+                            <td id="price">${{ order.price }}</td>
                             {% if order.is_completed %}<td><span class="badge bg-success">Delivered</span></td>
                             {% else %}<td><span class="badge bg-warning">Pending</span></td>
                             {% endif %}

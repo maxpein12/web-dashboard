@@ -39,6 +39,7 @@ class Orders(models.Model):
     date = models.DateField()
     type = models.CharField(max_length=100)
     quantity = models.IntegerField(8)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     is_completed = models.BooleanField(default=False)
 
     def __str__(self):
