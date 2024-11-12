@@ -53,7 +53,18 @@ def inbox(request):
 @login_required
 def orders(request):
     orders = Orders.objects.all()
-    return render(request, 'orderlist.html', {'orders': orders})
+    if request.method == 'POST':
+        fromdate = request.POST['fromdate']
+        todate = request.POST['todate']
+        searchresult = Orders.objects.filter(date__range=[fromdate, todate])
+        return render(request, 'orderlist.html', {'orders': searchresult})
+    elif request.method == 'GET':
+        orders = Orders.objects.all()
+        return render(request, 'orderlist.html', {'orders': orders})
+    else:
+        orders = Orders.objects.all()
+        return render(request, 'orderlist.html', {'orders': orders})
+
 
 @login_required
 def stock(request): 
@@ -104,7 +115,6 @@ def register(request):
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
-
         new_user = User.objects.create_user(username, email, password)
         new_user.save()
         return redirect('/dashboard/team')
@@ -156,7 +166,6 @@ def loginpage(request):
 def logoutpage(request):
     logout(request)
     return redirect('/dashboard/login')
-
 
 
 

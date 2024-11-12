@@ -115,24 +115,21 @@
                             <img src="https://www.svgrepo.com/show/435321/filter.svg" alt="Filter Icon">
                             Filter By
                         </button>
-                        
+                        <form action="" method="post">
+                            {% csrf_token %}
                         <div class="filter-options">
-                            <select class="filter-select" id="filter-date">
-                                <option value="" disabled selected>Date</option>
-                                <option value="today">Today</option>
-                                <option value="this-week">This Week</option>
-                                <option value="this-month">This Month</option>
-                            </select>
-
+                            From:<input type="date" id="filter-date" name="fromdate">
+                            To: <input type="date" id="filter-date" name="todate">
+                            <input type="submit" value="Search" class="filter-button" style="background-color: cornflowerblue; margin-left: 10px;">
+                        </form>        
                             
                             
                             <select class="filter-select" id="filter-order-type">
                                 <option value="" disabled selected>Order Type</option>
-                                <option value="electric">Electric</option>
-                                <option value="book">Book</option>
-                                <option value="medicine">Medicine</option>
-                                <option value="mobile">Mobile</option>
-                                <option value="watch">Watch</option>
+                                <option value="electric">iPhone</option>
+                                <option value="book">Mac</option>
+                                <option value="medicine">Apple Watch</option>
+                                
                             </select>
                             
                             <select class="filter-select" id="filter-order-status">
@@ -144,8 +141,10 @@
                                 <option value="in-transit">In Transit</option>
                             </select>
                         </div>
-
-                        <button class="reset-filter-button">Reset Filter</button>
+                        <form action="" method="get">
+                            {% csrf_token %}
+                        <button class="reset-filter-button" type="submit">Reset Filter</button>
+                    </form>
                     </div>
                     
                     <table>

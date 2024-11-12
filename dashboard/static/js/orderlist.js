@@ -67,4 +67,5 @@ document.querySelector('.reset-filter-button').addEventListener('click', functio
     document.getElementById('filter-order-status').selectedIndex = 0;
 
     // Code to reset the table view goes here.
+    
 });
