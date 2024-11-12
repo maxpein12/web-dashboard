@@ -1,11 +1,9 @@
 from django.shortcuts import redirect, render
-
 from .models import Client, Team, Product, Orders
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
-
 import datetime
 
 
