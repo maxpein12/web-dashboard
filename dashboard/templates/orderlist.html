@@ -111,20 +111,35 @@
                 <h2>Order Lists</h2>
                 <section class="order-lists">
                     <div class="filter-bar">
-                        <button class="filter-button">
+                        <!-- <button class="filter-button">
                             <img src="https://www.svgrepo.com/show/435321/filter.svg" alt="Filter Icon">
-                            Filter By
-                        </button>
+                           
+                        </button> -->
                         <form action="" method="post">
                             {% csrf_token %}
                         <div class="filter-options">
-                            From:<input type="date" id="filter-date" name="fromdate">
-                            To: <input type="date" id="filter-date" name="todate">
-                            <input type="submit" value="Search" class="filter-button" style="background-color: cornflowerblue; margin-left: 10px;">
+
+                            <input type="text" id="filter-name" style="margin-left: 10px; margin-right: 10px;" name="name" placeholder="Name"> 
+
+                            From:<input type="date" style="margin-left: 2px; margin-right: 10px;" id="filter-date" name="fromdate">
+                            To: <input type="date" style="margin-left: 2px;" id="filter-date" name="todate">
+
+                           
+                            <select name="status" id="" class="filter-select" style="margin-left: 10px;" >
+                                <option value="all">All</option>
+                                <option value="completed">Completed</option>
+                                <option value="processing">Processing</option>
+                            </select>
+
+                            <input type="submit" value="Search" class="filter-button" style="background-color: cornflowerblue; margin-left: 10px; color: white;">
+
+
+
+
                         </form>        
                             
                             
-                            <select class="filter-select" id="filter-order-type">
+                            <!-- <select class="filter-select" id="filter-order-type">
                                 <option value="" disabled selected>Order Type</option>
                                 <option value="electric">iPhone</option>
                                 <option value="book">Mac</option>
@@ -139,11 +154,11 @@
                                 <option value="rejected">Rejected</option>
                                 <option value="on-hold">On Hold</option>
                                 <option value="in-transit">In Transit</option>
-                            </select>
+                            </select> -->
                         </div>
                         <form action="" method="get">
                             {% csrf_token %}
-                        <button class="reset-filter-button" type="submit">Reset Filter</button>
+                        <button class="reset-filter-button" type="submit">Reset</button>
                     </form>
                     </div>
                     

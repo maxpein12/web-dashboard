@@ -52,18 +52,39 @@ def inbox(request):
 
 @login_required
 def orders(request):
-    orders = Orders.objects.all()
+    orders = Orders.objects.all().order_by('-date')
     if request.method == 'POST':
-        fromdate = request.POST['fromdate']
-        todate = request.POST['todate']
-        searchresult = Orders.objects.filter(date__range=[fromdate, todate])
+        fromdate = request.POST.get('fromdate', '')
+        todate = request.POST.get('todate', '')
+        name = request.POST.get('name', '')
+        status = request.POST.get('status', '')
+
+        filters = {}
+
+        if fromdate and todate:
+            filters['date__range'] = [fromdate, todate]
+
+        if name:
+            filters['name'] = name
+
+        if status and status != 'all':
+            if status == 'completed':
+                status = True
+            elif status == 'processing':
+                status = False
+            
+            filters['is_completed'] = status
+
+        searchresult = Orders.objects.filter(**filters).order_by('-date')
         return render(request, 'orderlist.html', {'orders': searchresult})
     elif request.method == 'GET':
-        orders = Orders.objects.all()
+        orders = Orders.objects.all().order_by('-date')
         return render(request, 'orderlist.html', {'orders': orders})
     else:
-        orders = Orders.objects.all()
+        orders = Orders.objects.all().order_by('-date')
         return render(request, 'orderlist.html', {'orders': orders})
+
+
 
 
 @login_required
