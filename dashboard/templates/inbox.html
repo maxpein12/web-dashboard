@@ -147,153 +147,16 @@
             
                     <!-- Email List -->
                     <div class="email-list">
+                        {% for message in messages %}
                         <div class="email-item">
                             <input type="checkbox">
                             <span class="star">&#9733;</span>
-                            <span class="sender">Jullu Jalal</span>
-                            <span class="subject">Our Bachelor of Commerce program is ACBSP-accredited.</span>
-                            <span class="time">8:38 AM</span>
+                            <span class="sender">{{ message.user }}</span>
+                            <span class="subject">{{ message.message }}</span>
+                            <span class="time">{{ message.timestamp}}</span>
                         </div>
-                        <div class="email-item">
-                            <input type="checkbox">
-                            <span class="star">&#9733;</span>
-                            <span class="sender">Minerva Barnett</span>
-                            <span class="subject">Get Best Advertiser In Your Side Pocket</span>
-                            <span class="time">8:13 AM</span>
-                        </div>
-                        <div class="email-item">
-                            <input type="checkbox">
-                            <span class="star">&#9733;</span>
-                            <span class="sender">Peter Lewis</span>
-                            <span class="subject">Vacation Home Rental Success</span>
-                            <span class="time">7:52 PM</span>
-                        </div>
-                        <div class="email-item">
-                            <input type="checkbox">
-                            <span class="star">&#9733;</span>
-                            <span class="sender">Jullu Jalal</span>
-                            <span class="subject">Our Bachelor of Commerce program is ACBSP-accredited.</span>
-                            <span class="time">8:38 AM</span>
-                        </div>
-                        <div class="email-item">
-                            <input type="checkbox">
-                            <span class="star">&#9733;</span>
-                            <span class="sender">Minerva Barnett</span>
-                            <span class="subject">Get Best Advertiser In Your Side Pocket</span>
-                            <span class="time">8:13 AM</span>
-                        </div>
-                        <div class="email-item">
-                            <input type="checkbox">
-                            <span class="star">&#9733;</span>
-                            <span class="sender">Peter Lewis</span>
-                            <span class="subject">Vacation Home Rental Success</span>
-                            <span class="time">7:52 PM</span>
-                        </div>
-                        <div class="email-item">
-                            <input type="checkbox">
-                            <span class="star">&#9733;</span>
-                            <span class="sender">Jullu Jalal</span>
-                            <span class="subject">Our Bachelor of Commerce program is ACBSP-accredited.</span>
-                            <span class="time">8:38 AM</span>
-                        </div>
-                        <div class="email-item">
-                            <input type="checkbox">
-                            <span class="star">&#9733;</span>
-                            <span class="sender">Minerva Barnett</span>
-                            <span class="subject">Get Best Advertiser In Your Side Pocket</span>
-                            <span class="time">8:13 AM</span>
-                        </div>
-                        <div class="email-item">
-                            <input type="checkbox">
-                            <span class="star">&#9733;</span>
-                            <span class="sender">Peter Lewis</span>
-                            <span class="subject">Vacation Home Rental Success</span>
-                            <span class="time">7:52 PM</span>
-                        </div>
-                        <div class="email-item">
-                            <input type="checkbox">
-                            <span class="star">&#9733;</span>
-                            <span class="sender">Jullu Jalal</span>
-                            <span class="subject">Our Bachelor of Commerce program is ACBSP-accredited.</span>
-                            <span class="time">8:38 AM</span>
-                        </div>
-                        <div class="email-item">
-                            <input type="checkbox">
-                            <span class="star">&#9733;</span>
-                            <span class="sender">Minerva Barnett</span>
-                            <span class="subject">Get Best Advertiser In Your Side Pocket</span>
-                            <span class="time">8:13 AM</span>
-                        </div>
-                        <div class="email-item">
-                            <input type="checkbox">
-                            <span class="star">&#9733;</span>
-                            <span class="sender">Peter Lewis</span>
-                            <span class="subject">Vacation Home Rental Success</span>
-                            <span class="time">7:52 PM</span>
-                        </div>
-                        <div class="email-item">
-                            <input type="checkbox">
-                            <span class="star">&#9733;</span>
-                            <span class="sender">Jullu Jalal</span>
-                            <span class="subject">Our Bachelor of Commerce program is ACBSP-accredited.</span>
-                            <span class="time">8:38 AM</span>
-                        </div>
-                        <div class="email-item">
-                            <input type="checkbox">
-                            <span class="star">&#9733;</span>
-                            <span class="sender">Minerva Barnett</span>
-                            <span class="subject">Get Best Advertiser In Your Side Pocket</span>
-                            <span class="time">8:13 AM</span>
-                        </div>
-                        <div class="email-item">
-                            <input type="checkbox">
-                            <span class="star">&#9733;</span>
-                            <span class="sender">Peter Lewis</span>
-                            <span class="subject">Vacation Home Rental Success</span>
-                            <span class="time">7:52 PM</span>
-                        </div>
-                        <div class="email-item">
-                            <input type="checkbox">
-                            <span class="star">&#9733;</span>
-                            <span class="sender">Jullu Jalal</span>
-                            <span class="subject">Our Bachelor of Commerce program is ACBSP-accredited.</span>
-                            <span class="time">8:38 AM</span>
-                        </div>
-                        <div class="email-item">
-                            <input type="checkbox">
-                            <span class="star">&#9733;</span>
-                            <span class="sender">Minerva Barnett</span>
-                            <span class="subject">Get Best Advertiser In Your Side Pocket</span>
-                            <span class="time">8:13 AM</span>
-                        </div>
-                        <div class="email-item">
-                            <input type="checkbox">
-                            <span class="star">&#9733;</span>
-                            <span class="sender">Peter Lewis</span>
-                            <span class="subject">Vacation Home Rental Success</span>
-                            <span class="time">7:52 PM</span>
-                        </div>
-                        <div class="email-item">
-                            <input type="checkbox">
-                            <span class="star">&#9733;</span>
-                            <span class="sender">Jullu Jalal</span>
-                            <span class="subject">Our Bachelor of Commerce program is ACBSP-accredited.</span>
-                            <span class="time">8:38 AM</span>
-                        </div>
-                        <div class="email-item">
-                            <input type="checkbox">
-                            <span class="star">&#9733;</span>
-                            <span class="sender">Minerva Barnett</span>
-                            <span class="subject">Get Best Advertiser In Your Side Pocket</span>
-                            <span class="time">8:13 AM</span>
-                        </div>
-                        <div class="email-item">
-                            <input type="checkbox">
-                            <span class="star">&#9733;</span>
-                            <span class="sender">Peter Lewis</span>
-                            <span class="subject">Vacation Home Rental Success</span>
-                            <span class="time">7:52 PM</span>
-                        </div>
+                        {% endfor %}
+                        
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from .models import Client, Team, Product, Orders
+from .models import Client, Team, Product, Orders, Messages
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
@@ -14,18 +14,18 @@ def index(request):
     products = Product.objects.all()
     order_count = Orders.objects.count()
 
-    orders_january = Orders.objects.filter(date__month='1', date__year = now.year).count()
-    orders_february = Orders.objects.filter(date__month='2', date__year=now.year).count()
-    orders_march = Orders.objects.filter(date__month='3', date__year=now.year).count()
-    orders_april = Orders.objects.filter(date__month='4', date__year=now.year).count()
-    orders_may = Orders.objects.filter(date__month='5', date__year=now.year).count()
-    orders_june = Orders.objects.filter(date__month='6', date__year=now.year).count()
-    orders_july = Orders.objects.filter(date__month='7', date__year=now.year).count()
-    orders_august = Orders.objects.filter(date__month='8', date__year=now.year).count()
-    orders_september = Orders.objects.filter(date__month='9', date__year=now.year).count()
-    orders_october = Orders.objects.filter(date__month='10', date__year=now.year).count()
-    orders_november = Orders.objects.filter(date__month='11', date__year=now.year).count()
-    orders_december = Orders.objects.filter(date__month='12', date__year=now.year).count()
+    orders_january = Orders.objects.filter(date__month='1', date__year = now.year).aggregate(total=Sum('price'))
+    orders_february = Orders.objects.filter(date__month='2', date__year=now.year).aggregate(total=Sum('price'))
+    orders_march = Orders.objects.filter(date__month='3', date__year=now.year).aggregate(total=Sum('price'))
+    orders_april = Orders.objects.filter(date__month='4', date__year=now.year).aggregate(total=Sum('price'))
+    orders_may = Orders.objects.filter(date__month='5', date__year=now.year).aggregate(total=Sum('price'))
+    orders_june = Orders.objects.filter(date__month='6', date__year=now.year).aggregate(total=Sum('price'))
+    orders_july = Orders.objects.filter(date__month='7', date__year=now.year).aggregate(total=Sum('price'))
+    orders_august = Orders.objects.filter(date__month='8', date__year=now.year).aggregate(total=Sum('price'))
+    orders_september = Orders.objects.filter(date__month='9', date__year=now.year).aggregate(total=Sum('price'))
+    orders_october = Orders.objects.filter(date__month='10', date__year=now.year).aggregate(total=Sum('price'))
+    orders_november = Orders.objects.filter(date__month='11', date__year=now.year).aggregate(total=Sum('price'))
+    orders_december = Orders.objects.filter(date__month='12', date__year=now.year).aggregate(total=Sum('price'))
 
     order_pending = Orders.objects.filter(is_completed='0', date__year=now.year).count()
     order_delivered = Orders.objects.filter(is_completed='1', date__year=now.year).count()
@@ -46,7 +46,9 @@ def favorites(request):
 
 @login_required
 def inbox(request):
-    return render(request, 'inbox.html')
+    messages = Messages.objects.all()
+    
+    return render(request, 'inbox.html', {'messages': messages})
 
 @login_required
 def orders(request):
