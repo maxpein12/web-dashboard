@@ -10,7 +10,7 @@ import datetime
 now = datetime.datetime.now()
 @login_required
 def index(request):
-    orders = Orders.objects.all()
+    orders = Orders.objects.all().order_by('-date')
     products = Product.objects.all()
     order_count = Orders.objects.count()
 
@@ -46,7 +46,7 @@ def favorites(request):
 
 @login_required
 def inbox(request):
-    messages = Messages.objects.all()
+    messages = Messages.objects.all().order_by('-timestamp')
     
     return render(request, 'inbox.html', {'messages': messages})
 
