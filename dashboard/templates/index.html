@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en"  >
+<html lang="en" data-bs-theme="dark" >
 
 <head>
     <meta charset="UTF-8">
@@ -90,7 +90,7 @@
     </aside>
 
     <!-- Main Dashboard Content -->
-    <main class="main-content">
+    <main class="main-content" data-bs-theme="dark">
         <!-- <header class="dashboard-header">
             <div class="menu-button" id="menuButton">
                 <img src="https://www.svgrepo.com/show/509382/menu.svg" alt="Menu Icon" width="24" height="24">
@@ -109,7 +109,7 @@
 
         <header class="dashboard-header">
             <div class="menu-button" id="menuButton">
-                <img src="https://www.svgrepo.com/show/509382/menu.svg" alt="Menu Icon" width="24" height="24">
+                <img src="https://www.svgrepo.com/show/509382/menu.svg" alt="Menu Icon" width="24" height="24" class="filter-white">
             </div>
             <div class="search-bar">
                 <input type="text" placeholder="Search">
@@ -238,7 +238,7 @@
 
                 
                     <h2>Deals details</h2>
-                <table class="table table-striped">
+                <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th>Product Name</th>
@@ -253,8 +253,8 @@
                         {% for order in orders %}
                         <tr>
                             {% if order.type == 'Apple Watch' %}<td id="product"><img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MXM23ref_FV99_VW_34FR+watch-case-46-aluminum-jetblack-nc-s10_VW_34FR+watch-face-46-aluminum-jetblack-s10_VW_34FR?wid=5120&hei=3280&bgc=fafafa&trim=1&fmt=p-jpg&qlt=80&.v=TnVrdDZWRlZzTURKbHFqOGh0dGpVRW5TeWJ6QW43NUFnQ2V4cmRFc1VnYUdWejZ5THhpKzJwRmRDYlhxN2o5aXB2QjR6TEZ4ZThxM3VqYkZobmlXM3RGNnlaeXQ4NGFKQTAzc0NGeHR2aVk0VEhOZEFKYmY1ZHNpalQ3YVhOWk9WVlBjZVFuazArV21YaFcvTVJ5dzRuY0dmQWU1UUhxNENQZVRyQjk5ZnRCcVBpVENpMUluRnVNbld0T1NWSFh2cXlYK1hMV0U1ZW9xcCtlRHF3V3gyZThGL0dtL1JkeEJQSnRCMXJsZFBFY2doN2ZiODFwWklZeDgrZ0RtbVRXag" alt="Apple Watch" class="product-image"> Apple Watch</td>
-                            {% elif order.type == 'Mac' %} <td id="product"><img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mba13-m2-digitalmat-gallery-1-202402?wid=728&hei=666&fmt=png-alpha&.v=1707263976493" alt="Macbook" class="product-image" >Macbook</td>
-                            {% elif order.type == 'iPhone' %}<td id="product"><img src="https://beyondthebox.ph/cdn/shop/products/IPHONE121_COLOR-PURPLE_CAPACITY-ALL_576x.png?v=1631584588" alt="iPhone" class="product-image" >iPhone</td>
+                            {% elif order.type == 'Mac' %} <td id="product"><img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mba13-m2-digitalmat-gallery-1-202402?wid=728&hei=666&fmt=png-alpha&.v=1707263976493" alt="Macbook" class="product-image" > Macbook</td>
+                            {% elif order.type == 'iPhone' %}<td id="product"><img src="https://beyondthebox.ph/cdn/shop/products/IPHONE121_COLOR-PURPLE_CAPACITY-ALL_576x.png?v=1631584588" alt="iPhone" class="product-image" > iPhone</td>
                             {% endif %}
                             <td>{{ order.address }}</td>
                             <td>{{ order.date }}</td>
@@ -274,6 +274,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/static/js/dashboard.js"></script>
+    <script>
+        Chart.defaults.global.defaultFontColor = "#fff";
+    </script>
 </body>
 
 </html>

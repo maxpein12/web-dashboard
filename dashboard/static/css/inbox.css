@@ -10,9 +10,9 @@ body {
 /* Sidebar */
 .sidebar {
     width: 250px;
-    background-color: #fff;
+    /* background-color: #fff; */
     padding: 15px;
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 0 8px rgba(208, 208, 208, 0.1);
     height: 100vh;
     position: fixed;
     top: 0; /* Ensure it starts from the top */
@@ -31,28 +31,28 @@ body {
     padding: 0;
 }
 .sidebar-menu li {
-    /* display: flex; */
+    display: flex;
     align-items: center; /* Vertically align icon and text */
     margin-bottom: 5px;
 }
 .sidebar-menu li a {
     text-decoration: none;
-    color: #333;
+    /* color: #333; */
     display: flex;
     align-items: center;
     font-size: 16px;
     padding: 10px; /* Add padding to menu items */
     border-radius: 8px; /* Rounded corners */
-    transition: background-color 0.3s ease; /* Smooth transition */
+    /* transition: background-color 0.3s ease; Smooth transition */
 }
 .sidebar-menu li a:hover {
-    background-color: #f0f0f0; /* Change background on hover */
+    /* background-color: #f0f0f0; Change background on hover */
     padding-left: 10px;
     border-radius: 5px;
 }
 .sidebar-menu li a.active {
     background-color: #3498db; /* Active background color */
-    color: #fff; /* Active text color */
+    color: #fff; /*Active text color*/
     width: 100%;
 }
 .sidebar-menu li a .menu-icon {
@@ -60,6 +60,7 @@ body {
     height: 20px;
     margin-right: 10px; /* Space between icon and text */
     vertical-align: middle;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
     /* filter: brightness(0) invert(1); */
 }
 .sidebar.hidden {
@@ -80,6 +81,7 @@ body {
     height: 24px; /* Icon size */
     margin-left: 20px;
 }
+
 .menu-button svg {
     fill: #3498db; /* Change icon color */
     width: 100%; /* Scale to fit the container */
@@ -106,43 +108,50 @@ body {
     /* margin-left: 250px; */
     padding: 20px;
     width: 100%;
-    background-color: #F5F6FA;
+    background-color: #3d3d3f;
     box-sizing: border-box;
     border-radius: 10px;
 }
 
-/* Header */
+
+
+/* Header Styles */
 .dashboard-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: white;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    /* background-color: white; */
+    box-shadow: 2px 0 8px rgba(208, 208, 208, 0.1);
     margin-bottom: 20px;
     border-radius: 10px;
 }
+
+/* Search bar styling */
 .search-bar input {
     padding: 8px;
     width: 500px;
     border-radius: 20px;
     border: 1px solid #ddd;
-    background-color: #e6e5e5;
-    margin-left: 0px;
-    /* margin-right: 300px; */
+    /* background-color: #e6e5e5; */
     transition: margin-left 0.3s ease, width 0.3s ease;
 }
+
+/* Header options */
 .header-options {
     display: flex;
     align-items: center;
     padding: 10px;
     margin-right: 60px;
 }
+
 .header-options .notification-icon,
 .header-options .flag-icon {
     margin-right: 20px;
     font-size: 1.2rem;
 }
+
+/* User avatar */
 .user-avatar {
     width: 40px;
     height: 40px;
@@ -150,30 +159,45 @@ body {
     margin-right: 10px;
 }
 
-/* Main Content */
-.main-content {
-    margin-left: 250px;
-    padding-top: 20px;
-    width: calc(100% - 250px);
-    /* background-color: #ff0000; */
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    transition: margin-left 0.3s ease, width 0.3s ease;
+.dropdown {
+    position: relative;
+    display: inline-block;
 }
-.main-content.hidden {
-    margin-left: 0; /* Remove left margin when sidebar is hidden */
-    width: 100%; /* Full width when sidebar is hidden */
+
+.dropdown-toggle {
+    cursor: pointer;
 }
-.main-body {
-    /* margin-left: 250px; */
-    padding: 20px;
-    width: 100%;
-    background-color: #F5F6FA;
-    box-sizing: border-box;
-    border-radius: 10px;
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 2px 0 8px rgba(208, 208, 208, 0.1);
+    min-width: 160px;
+    border-radius: 5px;
+    z-index: 1;
+    padding: 10px 0;
+    text-align: left;
 }
+
+.dropdown-menu a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    display: block;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show dropdown when clicked */
+.dropdown.show .dropdown-menu {
+    display: block;
+}
+
+
 
 /* Inbox Section */
 .inbox-header {
@@ -185,21 +209,22 @@ body {
 .inbox-container {
     display: flex;
     height: calc(100% - 50px);
+    background-color: #212529;
 }
 
 /* Inbox Sidebar */
 .inbox-sidebar {
     width: 250px;
-    background-color: #fff;
+    /* background-color: #fff; */
     padding: 20px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 0 8px rgba(208, 208, 208, 0.1);
     display: flex;
     flex-direction: column;
     /* justify-content: space-between; */
 }
 .compose-button {
     background-color: #4285f4;
-    color: white;
+    /* color: white; */
     border: none;
     padding: 15px;
     width: 100%;
@@ -226,7 +251,7 @@ body {
     justify-content: space-between;
     /* padding: 12px 0; */
     text-decoration: none;
-    color: #495057;
+    color: #caced1;
 }
 
 .label-section {
@@ -238,7 +263,7 @@ body {
 .label-list {
     list-style: none;
     padding: 0;
-    color: #6c757d;
+    color: #caced1;
 }
 .label-list li {
     padding: 5px 0;
@@ -247,9 +272,9 @@ body {
 /* Inbox Content */
 .inbox-content {
     flex-grow: 1;
-    background-color: white;
+    /* background-color: white; */
     padding: 20px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 0 8px rgba(208, 208, 208, 0.1);
     margin-left: 20px;
 }
 .inbox-header input.search-input {
@@ -277,7 +302,7 @@ body {
     border-bottom: 1px solid #f1f1f1;
 }
 .email-item:hover {
-    background-color: #f8f9fa;
+    background-color: #9a9da0;
 }
 .email-item input[type="checkbox"] {
     margin-right: 10px;
@@ -297,4 +322,7 @@ body {
 .email-item .time {
     color: #6c757d;
     text-align: right;
+}
+.filter-white{
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
 }

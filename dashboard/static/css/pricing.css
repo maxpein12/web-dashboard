@@ -6,13 +6,13 @@
         display: flex;
         overflow-x: hidden;
     }
-
+    
     /* Sidebar */
     .sidebar {
         width: 250px;
-        background-color: #fff;
+        /* background-color: #fff; */
         padding: 15px;
-        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 2px 0 8px rgba(208, 208, 208, 0.1);
         height: 100vh;
         position: fixed;
         top: 0; /* Ensure it starts from the top */
@@ -37,22 +37,22 @@
     }
     .sidebar-menu li a {
         text-decoration: none;
-        color: #333;
+        /* color: #333; */
         display: flex;
         align-items: center;
         font-size: 16px;
         padding: 10px; /* Add padding to menu items */
         border-radius: 8px; /* Rounded corners */
-        transition: background-color 0.3s ease; /* Smooth transition */
+        /* transition: background-color 0.3s ease; Smooth transition */
     }
     .sidebar-menu li a:hover {
-        background-color: #f0f0f0; /* Change background on hover */
+        /* background-color: #f0f0f0; Change background on hover */
         padding-left: 10px;
         border-radius: 5px;
     }
     .sidebar-menu li a.active {
         background-color: #3498db; /* Active background color */
-        color: #fff; /* Active text color */
+        color: #fff; /*Active text color*/
         width: 100%;
     }
     .sidebar-menu li a .menu-icon {
@@ -60,13 +60,14 @@
         height: 20px;
         margin-right: 10px; /* Space between icon and text */
         vertical-align: middle;
+        filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
         /* filter: brightness(0) invert(1); */
     }
     .sidebar.hidden {
         transform: translateX(-100%); /* Move the sidebar out of view */
         transition: transform 0.3s ease; /* Smooth transition */
     }
-
+    
     /* menu toggle */
     .menu-section {
         margin-top: 10px;
@@ -80,13 +81,13 @@
         height: 24px; /* Icon size */
         margin-left: 20px;
     }
-
+    
     .menu-button svg {
         fill: #3498db; /* Change icon color */
         width: 100%; /* Scale to fit the container */
         height: 100%; /* Scale to fit the container */
     }
-
+    
     /* Main Content */
     .main-content {
         margin-left: 250px;
@@ -107,44 +108,50 @@
         /* margin-left: 250px; */
         padding: 20px;
         width: 100%;
-        background-color: #F5F6FA;
+        background-color: #3d3d3f;
         box-sizing: border-box;
         border-radius: 10px;
     }
-
-    /* Header */
+    
+    
+    
+    /* Header Styles */
     .dashboard-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 10px;
-        background-color: white;
-        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        /* background-color: white; */
+        box-shadow: 2px 0 8px rgba(208, 208, 208, 0.1);
         margin-bottom: 20px;
         border-radius: 10px;
     }
+    
+    /* Search bar styling */
     .search-bar input {
         padding: 8px;
         width: 500px;
         border-radius: 20px;
         border: 1px solid #ddd;
-        background-color: #e6e5e5;
-        margin-left: 0px;
-        /* margin-right: 300px; */
+        /* background-color: #e6e5e5; */
         transition: margin-left 0.3s ease, width 0.3s ease;
     }
-
+    
+    /* Header options */
     .header-options {
         display: flex;
         align-items: center;
         padding: 10px;
         margin-right: 60px;
     }
+    
     .header-options .notification-icon,
     .header-options .flag-icon {
         margin-right: 20px;
         font-size: 1.2rem;
     }
+    
+    /* User avatar */
     .user-avatar {
         width: 40px;
         height: 40px;
@@ -173,10 +180,10 @@
     }
     
     .plan {
-        background-color: white;
+        background-color: rgb(33,37,41);
         padding: 20px;
         border-radius: 15px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 2px 0 8px rgba(208, 208, 208, 0.3);
         width: 30%;
         text-align: center;
         position: relative;
@@ -185,7 +192,7 @@
     .plan h2 {
         font-size: 1.8em;
         margin-bottom: 10px;
-        color: #333;
+        color: #ffffff;
     }
     
     .price {
@@ -254,3 +261,7 @@
         }
     }
     
+
+    .filter-white{
+        filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+    }

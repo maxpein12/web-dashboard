@@ -8,16 +8,40 @@ const salesChart = new Chart(ctx, {
             label: 'Sales',
             data: [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec],
             backgroundColor: 'rgba(52, 152, 219, 0.5)',
+            fontColor: '#fff',
             borderColor: '#3498db',
             borderWidth: 2,
-            fill: true
-        }]
+            fill: true,
+
+            
+        }],
+        
     },
     options: {
         scales: {
             y: {
-                beginAtZero: true
+                grid: {
+                   
+                    color: "#6c757d"
+                  },
+                beginAtZero: true,
+                    ticks:{
+                        color: "white"
+                    }
+                
+            },
+            x: {
+                grid: {
+                   
+                    color: "#6c757d"
+                  },
+                ticks: {
+                    color: "white"
+                }
             }
+        },
+        grid: {
+            color: "white"
         },
         responsive: true,
         plugins: {
