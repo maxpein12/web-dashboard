@@ -100,7 +100,7 @@ def pricing(request):
 def calendar(request):
     return render(request, 'calendar.html')
 
-@login_required
+@login_required 
 def todo(request):
     return render(request, 'to-do.html')
 
@@ -111,10 +111,11 @@ def contact(request):
 
 @login_required
 def invoice(request):
-    return render(request, 'invoice.html')
-
+    orders = Orders.objects.all().order_by('-date')
+    
+    return render(request, 'invoice.html', {'orders': orders})
 @login_required
-def ui(request):
+def ui(request):    
     return render(request, 'ui.html')
 
 @login_required
@@ -141,7 +142,7 @@ def register(request):
         return redirect('/dashboard/team')
     
     return render(request, 'register.html')
-
+    
 
 
 def clientRegister(request):
