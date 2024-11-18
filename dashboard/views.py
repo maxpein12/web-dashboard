@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from .models import Client, Team, Product, Orders, Messages
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout
@@ -131,28 +131,31 @@ def table(request):
 
 
 
-def register(request):
-    username = email = password = None
-    if request.method == 'POST':
-        username = request.POST['username']
-        email = request.POST['email']
-        password = request.POST['password']
-        new_user = User.objects.create_user(username, email, password)
-        new_user.save()
-        return redirect('/dashboard/team')
+# def register(request):
+    # username = email = password = None
+    # if request.method == 'POST':
+    #     username = request.POST['username']
+    #     email = request.POST['email']
+    #     password = request.POST['password']
+    #     new_user = User.objects.create_user(username, email, password)
+    #     new_user.save()
+    #     return redirect('/dashboard/team')
     
-    return render(request, 'register.html')
+    # return render(request, 'register.html')
     
 
 
 def clientRegister(request):
     if request.method == 'POST':
+        username = request.POST['username']
         name = request.POST['name']
         email = request.POST['email']
+        age = request.POST['age']
         gender = request.POST['gender']
-        Client.objects.create(name=name, email=email, gender=gender)
-        return render(request, 'contact.html')
-    return render(request, 'contact.html')
+        new_client = Client.objects.create(name=name, age=age, username=username , email=email, gender=gender)
+        new_client.save()
+        return redirect('contact')
+    return render(request, 'register.html')
 
 
 def loginpage(request):
@@ -192,3 +195,6 @@ def logoutpage(request):
 
 
 
+def  test(request, client_id):
+    client = get_object_or_404(Client, pk=client_id)
+    return render(request, 'test.html', {'client': client})

@@ -110,7 +110,7 @@
         <div class="main-body">
             <div class="contact-header">
                 <h2>Contact List</h2>
-                <button id="add-contact-btn">Add New Contact</button>
+               <a href="{% url 'register' %}"  ><button id="add-contact-btn">Add New Contact</button></a> 
             </div>
 
             <div class="contact-list-container">
@@ -160,22 +160,22 @@
                         </label> -->
                     </div>
                 </div>
-
+                
                 <!-- The contact list that will be replaced by the input form -->
                 <ul id="contact-list" class="contact-grid">
                     {% for client in clients %}
-                        {% if client and client.name %}
+                     {% if client and client.name %}
                             <li class="contact">
                                 <img src="https://via.placeholder.com/360x276" alt="Profile Picture" class="profile-picture">
                                 <div class="contact-info">
-                                    <span class="contact-name"> {{ client.name }} </span>
+                                    <a href="../..{% url 'contact' client.id %}" style="color: white; text-decoration: none;"> {{ client.name }} </span></a> 
                                     <span class="contact-email">{{ client.email }}</span>
                                     <button class="message-btn">Message</button>
                                 </div>
                             </li>
                         {% endif %}
                     {% endfor %}
-                    
+                
                 </ul>
             </div>
         </div>

@@ -22,7 +22,8 @@ urlpatterns = [
     path('stock/', views.stock, name='stock'),
     path('orders/', views.orders, name='orders'),
     path('login/', views.loginpage, name='login'),
-    path('register/', views.register, name='register'),
+    path('register/', views.clientRegister, name='register'),
     path('logout/', views.logoutpage, name='logout'),
+    path('contact/<int:client_id>/', views.test, name='contact'),
 
 ]
