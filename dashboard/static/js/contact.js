@@ -124,3 +124,18 @@ document.getElementById('add-contact-btn').addEventListener('click', function ()
     }
   });
   
+  function searchContacts() {
+    var li = document.getElementsByClassName("contact");
+    let input = document.getElementById('search').value
+    input = input.toLowerCase();
+    let x = document.getElementsByClassName('contact-name');
+
+    for (i = 0; i < x.length; i++) {
+        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+            x[i].closest('.contact').style.display = "none";
+        }
+        else {
+            x[i].closest('.contact').style.display = "block";
+        }
+    }
+}

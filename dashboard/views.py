@@ -197,4 +197,5 @@ def logoutpage(request):
 
 def  test(request, client_id):
     client = get_object_or_404(Client, pk=client_id)
+    
     return render(request, 'test.html', {'client': client})

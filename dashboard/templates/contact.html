@@ -96,7 +96,7 @@
                 <img src="https://www.svgrepo.com/show/509382/menu.svg" alt="Menu Icon" width="24" class="filter-white" height="24">
             </div>
             <div class="search-bar">
-                <input type="text" placeholder="Search">
+                <input type="text" placeholder="Search" id="search" onkeyup="searchContacts()" >
             </div>
             <div class="header-options">
 
@@ -168,7 +168,7 @@
                             <li class="contact">
                                 <img src="https://via.placeholder.com/360x276" alt="Profile Picture" class="profile-picture">
                                 <div class="contact-info">
-                                    <a href="../..{% url 'contact' client.id %}" style="color: white; text-decoration: none;"> {{ client.name }} </span></a> 
+                                    <a href="../..{% url 'contact' client.id %}" style="color: white; text-decoration: none;" class="contact-name"> {{ client.name }} </span></a> 
                                     <span class="contact-email">{{ client.email }}</span>
                                     <button class="message-btn">Message</button>
                                 </div>

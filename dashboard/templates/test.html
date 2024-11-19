@@ -1,19 +1,232 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark" >
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/static/css/test.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
-    test {{client.id}}
-    {{client.username}}    
-    {{client.name}}
-        {{client.email}}
-        {{client.gender}}
-        {{client.age}}
-        {{client.profile_pic}}
-        {{client.points}}
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>Tomodachi</h2>
+        </div>
+        <ul class="sidebar-menu" >
+            <li><a href="{% url 'index' %}" class="menu-item">
+                <img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/dashboard-512.png" class="menu-icon" alt="Dashboard Icon">
+                Dashboard</a>
+            </li>
+            <li><a href="{% url 'products' %}" class="menu-item">
+                <img src="https://cdn.icon-icons.com/icons2/2596/PNG/512/grid_four_icon_155315.png" class="menu-icon" alt="Dashboard Icon">
+                Products</a>
+            </li>
+            <li><a href="{% url 'favorites' %}" class="menu-item">
+                <img src="https://www.svgrepo.com/show/54280/favorite.svg" class="menu-icon" alt="Dashboard Icon">
+                Favorites</a>
+            </li>
+            <li><a href="{% url 'inbox' %}" class="menu-item">
+                <img src="https://cdn.icon-icons.com/icons2/1919/PNG/512/twospeechbubbles_122034.png" class="menu-icon" alt="Dashboard Icon">
+                Inbox</a>
+            </li>
+            <li><a href="{% url 'orders' %}" class="menu-item">
+                <img src="https://www.svgrepo.com/show/335104/list-checkmark.svg" class="menu-icon" alt="Dashboard Icon">
+                Order Lists</a>
+            </li>
+            <li><a href="{% url 'stock' %}" class="menu-item">
+                <img src="https://static.thenounproject.com/png/602072-200.png" class="menu-icon" alt="Dashboard Icon">
+                Product Stock</a>
+            </li>
+            <hr>
+            <li class="menu-section">PAGES</li>
+            <li><a href="{% url 'pricing' %}" class="menu-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/1039/1039714.png" class="menu-icon" alt="Dashboard Icon">
+                Pricing</a>
+            </li>
+            <li><a href="{% url 'calendar' %}" class="menu-item">
+                <img src="https://i.pinimg.com/originals/ca/1a/3c/ca1a3c69fe05ba3696c8169a0e011ecc.png" class="menu-icon" alt="Dashboard Icon">
+                Calendar</a>
+            </li>
+            <li><a href="{% url 'todo' %}" class="menu-item">
+                <img src="https://www.freeiconspng.com/thumbs/list-icon/--check-list-checklist-do-list-tick-to-icon--icon-search-engine-17.png" class="menu-icon" alt="Dashboard Icon">
+                To-Do</a>
+            </li>
+            <li><a href="{% url 'contact' %}" class="menu-item active">
+                <img src="https://cdn-icons-png.flaticon.com/128/1250/1250592.png" class="menu-icon" alt="Dashboard Icon">
+                Contact</a>
+            </li>
+            <li><a href="{% url 'invoice' %}" class="menu-item">
+                <img src="https://www.freeiconspng.com/thumbs/invoices-icon/invoices-icon-3.png" class="menu-icon" alt="Dashboard Icon">
+                Invoice</a>
+            </li>
+            <li><a href="#" class="menu-item">
+                <img src="https://static.thenounproject.com/png/1792984-200.png" class="menu-icon" alt="Dashboard Icon">
+                UI Elements</a>
+            </li>
+            <li><a href="{% url 'team' %}" class="menu-item">
+                <img src="https://cdn.creazilla.com/icons/3251108/person-icon-lg.png" class="menu-icon" alt="Dashboard Icon">
+                Team</a>
+            </li>
+            <li><a href="{% url 'table' %}" class="menu-item">
+                <img src="https://static-00.iconduck.com/assets.00/grid-3x3-icon-512x512-95d9oi1f.png" class="menu-icon" alt="Dashboard Icon">
+                Table</a>
+            </li>
+            <hr>
+            <li><a href="#" class="menu-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Windows_Settings_app_icon.png/600px-Windows_Settings_app_icon.png" class="menu-icon" alt="Dashboard Icon">
+                Settings</a>
+            </li>
+            <li><a href="{% url 'logout' %}" class="menu-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/157/157316.png" class="menu-icon" alt="Dashboard Icon">
+                Logout</a>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Main Dashboard Content -->
+    <main class="main-content" data-bs-theme="dark">
+     
+
+        <header class="dashboard-header">
+            <div class="menu-button" id="menuButton">
+                <img src="https://www.svgrepo.com/show/509382/menu.svg" alt="Menu Icon" width="24" height="24" class="filter-white">
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search">
+            </div>
+            <div class="header-options">
+                <span class="notification-icon">🔔</span>
         
+                <!-- Flag Language Dropdown -->
+                <div class="dropdown">
+                    <span class="flag-icon dropdown-toggle">🇬🇧</span>
+                    <div class="dropdown-menu">
+                        <a href="#" data-lang="English">English</a>
+                        <a href="#" data-lang="Tagalog">Tagalog</a>
+                        <a href="#" data-lang="Japanese">Japanese</a>
+                        <a href="#" data-lang="Add">Add More Languages...</a>
+                    </div>
+                </div>
+        
+                <!-- Profile Dropdown -->
+                <div class="dropdown">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/019/900/322/small/happy-young-cute-illustration-face-profile-png.png" alt="User Avatar" class="user-avatar dropdown-toggle">
+                    <span class="user-info dropdown-toggle">{{ user.username }}</span>
+                    <div class="dropdown-menu">
+                        <a href="/admin/auth/user/{{ user.id }}/change/" target="_blank" >Manage Account</a>
+                        <a href="/admin/auth/user/{{ user.id }}/password/" target="_blank">Change Password</a>
+                        <a href="#">Activity Log</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="main-body">
+            <div>
+               
+            </div>    <!-- Dashboard Metrics -->
+            <section class="dashboard-metrics">
+
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <img src="https://www.iconpacks.net/icons/1/free-users-icon-267-thumb.png" alt="Orders Icon" class="metric-icon"> <!-- Order Icon -->
+                        
+                    </div>
+                    <!-- <div class="metric-change">⬆ 8.5% from yesterday</div> -->
+                </div>
+                <h2>{{ client.name }}</h2>
+            </section>
+
+            <section class="deals-details">
+
+                
+                <h2>Information</h2>
+            <table class="table table-striped table-bordered">
+                
+                <tr>
+                    <th>ID</th>
+                    <td>{{ client.id }}</td>
+                </tr>
+
+                    <tr>
+                        <th>Name</th>
+                        <td><input type="text" value="{{ client.name }}" style="border: none; background-color: transparent;" ></td>
+                    </tr>
+
+                    <tr>
+                        <th>Username</th>   
+                        <td><input type="text" value="{{ client.username }}" style="border: none; background-color: transparent;"> </td>
+                    </tr>
+
+                    <tr>
+                        <th>Email</th>  
+                        <td><input type="email" value="{{ client.email }}" style="border: none; background-color: transparent;"> </td>
+                    </tr>
+
+                    <tr>
+                        <th>Gender</th>  
+                        <td><input type="text" value="{{ client.gender }}" style="border: none; background-color: transparent;"></td> 
+                    </tr>
+
+                    <tr>
+                        <th>Age</th>  
+                        <td><input type="number" value="{{ client.age }}" style="border: none; background-color: transparent;"></td>
+                    </tr>
+                    
+                    <tr>
+                        <th>Identity Verification</th> 
+                        <td>
+                            <select name="" id=""  style="border: none; background-color: transparent;">
+                                <option value="verified">Verified</option>
+                                <option value="unverified">Unverified</option>
+
+                            </select>
+                            </td>
+                    </tr>
+
+                    <tr>
+                        <th>Points</th> 
+                        <td><input type="number" value="{{ client.points }}" style="border: none; background-color: transparent;"> </td>
+                    </tr>
+            </table>
+            <button style=" padding: 10px;
+            font-size: 16px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;">Save</button>
+        </section>
+
+
+
+            <!-- Sales Details Chart -->
+            <section class="chart-section">
+                <div>
+                    <h2>Picture Valitdation</h2>
+                </div>
+                <!-- <canvas id="" style="width: 100%; height: 500px;" ></canvas> -->
+                <img src="https://www.iconpacks.net/icons/1/free-users-icon-267-thumb.png" style="width: 100%; height: 700px;" alt="">
+               
+
+            </section>
+
+            
+            <!-- Deals Details Table -->
+            
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/dashboard.js"></script>
+    
 </body>
+
 </html>
+

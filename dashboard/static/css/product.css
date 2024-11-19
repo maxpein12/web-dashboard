@@ -109,7 +109,7 @@ body {
     /* margin-left: 250px; */
     padding: 20px;
     width: 100%;
-    background-color: #3d3d3f;
+    background-color: rgb(38, 43, 48);
     box-sizing: border-box;
     border-radius: 10px;
 }
