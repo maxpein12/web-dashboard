@@ -1,14 +1,19 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from .models import Client, Team, Product, Orders, Messages
-from django.contrib.auth.models import User
+from .models import Users
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
 import datetime
+from django.contrib.auth import *
+import hashlib
+from dashboard.auth_backend import SHA2Backend
+
+
 
 
 now = datetime.datetime.now()
-@login_required
+
 def index(request):
     orders = Orders.objects.all().order_by('-date')
     products = Product.objects.all()
@@ -34,23 +39,23 @@ def index(request):
     user_count = Client.objects.count()
     return render(request, 'index.html', {'user_count': user_count, 'order_count': order_count, 'order_pending': order_pending, 'orders': orders, 'orders_november': orders_november, 'orders_january': orders_january, 'orders_february': orders_february, 'orders_march': orders_march, 'orders_april': orders_april, 'orders_may': orders_may, 'orders_june': orders_june, 'orders_july': orders_july, 'orders_august': orders_august, 'orders_september': orders_september, 'orders_october': orders_october, 'orders_december': orders_december, 'products': products, 'total_sales': total_sales, 'order_delivered': order_delivered})  
 
-@login_required
+
 def products(request):
     products = Product.objects.all()
     return render(request, 'products.html', {'products': products})
 
-@login_required
+
 def favorites(request):
     products = Product.objects.all()
     return render(request, 'favorites.html', {'products': products})
 
-@login_required
+
 def inbox(request):
     messages = Messages.objects.all().order_by('-timestamp')
     
     return render(request, 'inbox.html', {'messages': messages})
 
-@login_required
+
 def orders(request):
     orders = Orders.objects.all().order_by('-date')
     if request.method == 'POST':
@@ -87,45 +92,47 @@ def orders(request):
 
 
 
-@login_required
+
 def stock(request): 
     products = Product.objects.all()
     return render(request, 'productstock.html', {'products': products})
 
-@login_required
+
 def pricing(request):
     return render(request, 'pricing.html')
 
-@login_required
+
 def calendar(request):
     return render(request, 'calendar.html')
 
-@login_required 
+
 def todo(request):
     return render(request, 'to-do.html')
 
-@login_required
-def contact(request):
-    clients = Client.objects.all()
-    return render(request, 'contact.html', {'clients': clients})
 
-@login_required
+def contact(request):
+    users = Users.objects.all()
+    print(users)  # Print the users variable
+    return render(request, 'contact.html', {'users': users})
+   
+
+
 def invoice(request):
     orders = Orders.objects.all().order_by('-date')
     
     return render(request, 'invoice.html', {'orders': orders})
-@login_required
+
 def ui(request):    
     return render(request, 'ui.html')
 
-@login_required
+
 def team(request):
     teams = Team.objects.all()
     users = User.objects.all()
     return render(request, 'team.html', {'users': users})
 
 
-@login_required
+
 def table(request):
     return render(request, 'table.html')
 
@@ -158,35 +165,30 @@ def clientRegister(request):
     return render(request, 'register.html')
 
 
+import hashlib
+
 def loginpage(request):
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
 
-        print("Attempting to authenticate user...")
         try:
-            user = User.objects.get(email=email)
-            print("User found:", user)
-            if user.check_password(password):
-                print("Password correct!")
-                validate_user = user
+            user = Users.objects.get(email=email)
+            salt = user.salt  # assuming you have a 'salt' field in your Users model
+            hashed_password = hashlib.sha256((password + salt).encode()).hexdigest()
+            if hashed_password == user.password and user.type == 0:
+                # Login the user
+                login(request, user)
+                print("Login successful! Redirecting to index page...")
+                return redirect('/dashboard')
             else:
-                print("Password incorrect!")
-                validate_user = None
-        except User.DoesNotExist:
-            print("User not found!")
-            validate_user = None
-
-        print("Authentication result:", validate_user)
-
-        if validate_user is not None:
-            print("Login successful! Redirecting to index page...")
-            login(request, validate_user)
-            return redirect('/dashboard')
-        else:
-            print("Login failed!")
-            return render(request, 'login.html')
+                print("Password is incorrect")
+        except Users.DoesNotExist:
+            print("Email does not exist")
+        error_msg = 'Invalid username or password'
+        return render(request, 'login.html', {'error': error_msg})
     return render(request, 'login.html')
+
 
 def logoutpage(request):
     logout(request)
@@ -195,7 +197,7 @@ def logoutpage(request):
 
 
 
-def  test(request, client_id):
-    client = get_object_or_404(Client, pk=client_id)
+def  test(request, pkuser):
+    user = get_object_or_404(Users, pk=pkuser)
     
-    return render(request, 'test.html', {'client': client})
+    return render(request, 'test.html', {'user': user})

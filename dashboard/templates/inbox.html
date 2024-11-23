@@ -18,21 +18,25 @@
             <h2>Tomodachi</h2>
         </div>
         <ul class="sidebar-menu">
-            <li><a href="{% url 'index' %}" class="menu-item">
-                <img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/dashboard-512.png" class="menu-icon" alt="Dashboard Icon">
-                Dashboard</a>
+            <li><a href="{% url 'team' %}" class="menu-item">
+                <img src="https://cdn.creazilla.com/icons/3251108/person-icon-lg.png" class="menu-icon" alt="Dashboard Icon">
+                Team</a>
+            </li>
+            <li><a href="{% url 'inbox' %}" class="menu-item active">
+                <img src="https://cdn.icon-icons.com/icons2/1919/PNG/512/twospeechbubbles_122034.png" class="menu-icon" alt="Dashboard Icon">
+                Inbox</a>
+            </li>
+            <li><a href="{% url 'contact' %}" class="menu-item">
+                <img src="https://cdn-icons-png.flaticon.com/128/1250/1250592.png" class="menu-icon" alt="Dashboard Icon">
+                Contact</a>
             </li>
             <li><a href="{% url 'products' %}" class="menu-item">
                 <img src="https://cdn.icon-icons.com/icons2/2596/PNG/512/grid_four_icon_155315.png" class="menu-icon" alt="Dashboard Icon">
                 Products</a>
             </li>
-            <li><a href="{% url 'favorites' %}" class="menu-item">
-                <img src="https://www.svgrepo.com/show/54280/favorite.svg" class="menu-icon" alt="Dashboard Icon">
-                Favorites</a>
-            </li>
-            <li><a href="{% url 'inbox' %}" class="menu-item active">
-                <img src="https://cdn.icon-icons.com/icons2/1919/PNG/512/twospeechbubbles_122034.png" class="menu-icon" alt="Dashboard Icon">
-                Inbox</a>
+            <li><a href="{% url 'pricing' %}" class="menu-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/1039/1039714.png" class="menu-icon" alt="Dashboard Icon">
+                Pricing</a>
             </li>
             <li><a href="{% url 'orders' %}" class="menu-item">
                 <img src="https://www.svgrepo.com/show/335104/list-checkmark.svg" class="menu-icon" alt="Dashboard Icon">
@@ -42,45 +46,15 @@
                 <img src="https://static.thenounproject.com/png/602072-200.png" class="menu-icon" alt="Dashboard Icon">
                 Product Stock</a>
             </li>
-            <hr>
-            <li class="menu-section">PAGES</li>
-            <li><a href="{% url 'pricing' %}" class="menu-item">
-                <img src="https://cdn-icons-png.flaticon.com/512/1039/1039714.png" class="menu-icon" alt="Dashboard Icon">
-                Pricing</a>
+            <li><a href="{% url 'orders' %}" class="menu-item">
+                <img src="https://www.svgrepo.com/show/335104/list-checkmark.svg" class="menu-icon" alt="Dashboard Icon">
+                Order Lists</a>
             </li>
-            <li><a href="{% url 'calendar' %}" class="menu-item">
-                <img src="https://i.pinimg.com/originals/ca/1a/3c/ca1a3c69fe05ba3696c8169a0e011ecc.png" class="menu-icon" alt="Dashboard Icon">
-                Calendar</a>
+            <li><a href="{% url 'index' %}" class="menu-item">
+                <img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/dashboard-512.png" class="menu-icon" alt="Dashboard Icon">
+                Dashboard</a>
             </li>
-            <li><a href="{% url 'todo' %}" class="menu-item">
-                <img src="https://www.freeiconspng.com/thumbs/list-icon/--check-list-checklist-do-list-tick-to-icon--icon-search-engine-17.png" class="menu-icon" alt="Dashboard Icon">
-                To-Do</a>
-            </li>
-            <li><a href="{% url 'contact' %}" class="menu-item">
-                <img src="https://cdn-icons-png.flaticon.com/128/1250/1250592.png" class="menu-icon" alt="Dashboard Icon">
-                Contact</a>
-            </li>
-            <li><a href="{% url 'invoice' %}" class="menu-item">
-                <img src="https://www.freeiconspng.com/thumbs/invoices-icon/invoices-icon-3.png" class="menu-icon" alt="Dashboard Icon">
-                Invoice</a>
-            </li>
-            <li><a href="#" class="menu-item">
-                <img src="https://static.thenounproject.com/png/1792984-200.png" class="menu-icon" alt="Dashboard Icon">
-                UI Elements</a>
-            </li>
-            <li><a href="{% url 'team' %}" class="menu-item">
-                <img src="https://cdn.creazilla.com/icons/3251108/person-icon-lg.png" class="menu-icon" alt="Dashboard Icon">
-                Team</a>
-            </li>
-            <li><a href="{% url 'table' %}" class="menu-item">
-                <img src="https://static-00.iconduck.com/assets.00/grid-3x3-icon-512x512-95d9oi1f.png" class="menu-icon" alt="Dashboard Icon">
-                Table</a>
-            </li>
-            <hr>
-            <li><a href="#" class="menu-item">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Windows_Settings_app_icon.png/600px-Windows_Settings_app_icon.png" class="menu-icon" alt="Dashboard Icon">
-                Settings</a>
-            </li>
+           
             <li><a href="{% url 'logout' %}" class="menu-item">
                 <img src="https://cdn-icons-png.flaticon.com/512/157/157316.png" class="menu-icon" alt="Dashboard Icon">
                 Logout</a>

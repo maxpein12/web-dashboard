@@ -24,6 +24,6 @@ urlpatterns = [
     path('login/', views.loginpage, name='login'),
     path('register/', views.clientRegister, name='register'),
     path('logout/', views.logoutpage, name='logout'),
-    path('contact/<int:client_id>/', views.test, name='contact'),
+    path('contact/<int:pkuser>/', views.test, name='contact'),
 
 ]

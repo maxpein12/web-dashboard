@@ -123,19 +123,33 @@ document.getElementById('add-contact-btn').addEventListener('click', function ()
       }
     }
   });
-  
   function searchContacts() {
     var li = document.getElementsByClassName("contact");
-    let input = document.getElementById('search').value
-    input = input.toLowerCase();
-    let x = document.getElementsByClassName('contact-name');
-
-    for (i = 0; i < x.length; i++) {
-        if (!x[i].innerHTML.toLowerCase().includes(input)) {
-            x[i].closest('.contact').style.display = "none";
+    let input = document.getElementById('search').value.toLowerCase();
+    let status = document.getElementById('status').value;
+  
+    for (i = 0; i < li.length; i++) {
+      let name = li[i].querySelector('.contact-name').textContent.toLowerCase();
+      let email = li[i].querySelector('.contact-email').textContent.toLowerCase();
+      let ageVerified = li[i].querySelector('#age-verified').textContent.toLowerCase();
+      let onlineOfflineStatus = li[i].querySelector('.message-btn').textContent.toLowerCase();
+  
+      if (status !== "all") {
+        if (status === "online" && onlineOfflineStatus === "online") {
+          li[i].style.display = "block";
+        } else if (status === "offline" && onlineOfflineStatus === "offline") {
+          li[i].style.display = "block";
+        } else if (status === "It was not accepted due to a comprehensive judgement." && ageVerified.includes("it was not accepted due to a comprehensive judgement")) {
+          li[i].style.display = "block";
+        } else if (ageVerified.includes(status)) {
+          li[i].style.display = "block";
+        } else {
+          li[i].style.display = "none";
         }
-        else {
-            x[i].closest('.contact').style.display = "block";
-        }
+      } else if (input !== "" && (!name.includes(input) && !email.includes(input))) {
+        li[i].style.display = "none";
+      } else {
+        li[i].style.display = "block";
+      }
     }
-}
+  }
